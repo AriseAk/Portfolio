@@ -8,7 +8,7 @@ import '../App.css';
 
 const Navbar = () => {
     return (
-        <nav className="flex justify-between">
+        <nav className="flex justify-between z-20">
             <div className="">
                 <Handwriting /> 
             </div>

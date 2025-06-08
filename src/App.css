@@ -11,6 +11,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
 *{
@@ -32,3 +33,77 @@ img {
   margin: 0;
   border-radius: 6px;
 }
+
+.second{
+    font-family: "Poppins", sans-serif;
+}
+
+.top{
+  position: relative;
+}
+.custom-shape-divider-top-1749318443 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1749318443 svg {
+    position: relative;
+    display: block;
+    width: calc(191% + 1.3px);
+    height: 43px;
+}
+
+.custom-shape-divider-top-1749318443 .shape-fill {
+    fill: #283618;
+}
+.top-root, .top-root * {
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: transparent !important; 
+}
+.top, .top * {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+
+.parallax {
+  position: relative;
+  overflow: hidden;
+}
+
+.scroller {
+  display: flex;
+  white-space: nowrap;
+  text-align: center;
+    font-family: "Poppins", sans-serif;
+  font-size: 10px;
+  letter-spacing: -0.02em;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+.scroller span {
+  flex-shrink: 0;
+}
+
+.custom-scroll-text {
+  font-size: 48px;        
+  font-weight: 700;        
+  color: #3d3d3d;          
+  letter-spacing: 3px;
+  white-space: nowrap; 
+  font-family: "Poppins", sans-serif;
+
+}
+
+
+@media (min-width: 768px) {
+  .scroller {
+    font-size: 5rem;
+    line-height: 5rem;
+  }
+} 
