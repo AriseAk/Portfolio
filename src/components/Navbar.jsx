@@ -14,9 +14,9 @@ const Navbar = () => {
             </div>
             {/* <div className="flex"><a href="">My Resume</a><IoMdDownload /></div> */}
             <ul className="gap-2" >
-                <li className="cursor-pointer">Projects</li>
-                <li className="cursor-pointer">Skills</li>
-                <li className="cursor-pointer">Contact</li>
+                <li className=" cursor-pointer">Projects</li>
+                <li className=" cursor-pointer">Skills</li>
+                <li className=" cursor-pointer">Contact</li>
             </ul>
         </nav>
     );

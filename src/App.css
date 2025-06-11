@@ -34,6 +34,10 @@ img {
   border-radius: 6px;
 }
 
+/* .inside{
+  text-shadow: 0 0 2px #f0ece4, 0 0 3px #3d3d3d;
+} */
+
 .second{
     font-family: "Poppins", sans-serif;
 }
@@ -100,6 +104,84 @@ img {
 
 }
 
+.size{
+  height: 40px;
+  width: 40px;
+}
+
+/* From Uiverse.io by CristianMontoya98 */ 
+.btn {
+ width: 6.5em;
+ height: 2.3em;
+ margin: 0.5em;
+ background: #3d3d3d;
+ color: white;
+ border: none;
+ border-radius: 0.625em;
+ font-size: 20px;
+ font-weight: bold;
+font-family: "Poppins", sans-serif;
+ cursor: pointer;
+ position: relative;
+ z-index: 1;
+ overflow: hidden;
+}
+
+button:hover {
+ color: #3d3d3d;
+}
+
+button:after {
+ content: "";
+ background: white;
+ position: absolute;
+ z-index: -1;
+ left: -20%;
+ right: -20%;
+ top: 0;
+ bottom: 0;
+ transform: skewX(-45deg) scale(0, 1);
+ transition: all 0.5s;
+}
+
+button:hover:after {
+ transform: skewX(-45deg) scale(1, 1);
+ -webkit-transition: all 0.5s;
+ transition: all 0.5s;
+}
+
+/* .card{
+  background-image: url(./assets/pattern.svg);
+  height: 100vh;
+    background-size: cover;
+  background-position: center;
+  position: relative;
+
+  
+}
+.card::before{
+  content: ''; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+ 
+} */
+.scroll-reveal {
+  margin: 20px 0;
+}
+
+.scroll-reveal-text {
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.word {
+  display: inline-block;
+}
 
 @media (min-width: 768px) {
   .scroller {
