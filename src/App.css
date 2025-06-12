@@ -16,7 +16,7 @@
 
 *{
     padding: 3px 4px;
-    background-color: #f0ece4;
+    background-color: #10100e;
   font-family: 'Anton', sans-serif;
 }
 
@@ -24,7 +24,7 @@
   font-family: 'Anton', sans-serif;
   font-weight: bold;
   color: transparent;
-  -webkit-text-stroke: 1px black; 
+  -webkit-text-stroke: 1px #ffffe358; 
 }
 
 img {
@@ -34,12 +34,16 @@ img {
   border-radius: 6px;
 }
 
+
 /* .inside{
   text-shadow: 0 0 2px #f0ece4, 0 0 3px #3d3d3d;
 } */
-
+.links{
+  color: #ffffe3;
+}
 .second{
     font-family: "Poppins", sans-serif;
+    color:#ffffe358 ;
 }
 
 .top{
@@ -180,6 +184,22 @@ button:hover:after {
 }
 
 .word {
+  display: inline-block;
+}
+
+.scroll-float {
+  overflow: hidden;
+}
+
+.scroll-float-text {
+  display: inline-block;
+  font-size: clamp(1.6rem, 8vw, 10rem);
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.char {
   display: inline-block;
 }
 

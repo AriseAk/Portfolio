@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from './components/Navbar';
 import './App.css';
 import armas from "./assets/armas.jpg";
@@ -12,25 +12,40 @@ import { BiLogoGmail } from "react-icons/bi";
 import pattern from './assets/pattern.svg';
 import Card from "./components/Card";
 import ScrollReveal from "./components/ScrollReveal";
-
+import ScrollFloat from "./components/ScrollFloat";
+import Divider from "./components/Divider";
+import Loader from "./components/Loader";
+import TechStack from "./components/TechStack";
 const velocity = 100;
 
-
-
 function App() {
+  const [loading, setLoading] = useState(true);
   const [linkedinHover, setLinkedinHover] = useState(false);
   const [githubHover, setGithubHover] = useState(false);
   const [gmailHover, setGmailHover] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <>
       <Navbar />
       <div className="container flex h-[25vh] justify-center -mt-[60px]">
         <div className="left flex justify-center items-center w-[25vw]">
-          <div className=" text-[#3d3d3d] text-4xl font-bold"><DecryptedText text="FULL" /></div>
+          <div className="text-[#ffffe3] text-4xl font-bold"><DecryptedText text="FULL" /></div>
           <div className="inside outline text-4xl"><DecryptedText text="STACK" /></div>
         </div>
-        <div className="right w-[60vw] flex justify-center items-center text-[140px] font-bold text-[#3d3d3d]">
+        <div className="right w-[60vw] flex justify-center items-center text-[140px] font-bold text-[#ffffe3]">
           <DecryptedText text="DEVELOPER" />
         </div>
       </div>
@@ -43,7 +58,6 @@ function App() {
         <div className="first w-[20vw] h-full flex justify-center items-center ">
           <img src={armas} alt="Profile" className="first w-full h-full object-cover " />
         </div>
-
         <div className="second w-[40vw] h-full flex justify-center gap-3 flex-col">
           <span>
             Hello! I’m Akshay, a passionate and driven Developer with a love for creating innovative solutions.
@@ -59,7 +73,7 @@ function App() {
           </div>
           <div className="links pl-[50px] w-[10vw] flex flex-row justify-center items-center gap-6">
             <a
-              href=""
+              href="#linkedin"
               onMouseEnter={() => setLinkedinHover(true)}
               onMouseLeave={() => setLinkedinHover(false)}
               className="relative flex flex-col items-center"
@@ -74,10 +88,8 @@ function App() {
                 />
               </div>
             </a>
-
-
             <a
-              href=""
+              href="#github"
               onMouseEnter={() => setGithubHover(true)}
               onMouseLeave={() => setGithubHover(false)}
               className="relative flex flex-col items-center"
@@ -93,7 +105,7 @@ function App() {
               </div>
             </a>
             <a
-              href=""
+              href="mailto:your-email@example.com"
               onMouseEnter={() => setGmailHover(true)}
               onMouseLeave={() => setGmailHover(false)}
               className="relative flex flex-col items-center"
@@ -108,39 +120,63 @@ function App() {
                 />
               </div>
             </a>
-
           </div>
         </div>
-
-
       </div>
 
       <Space />
-
+      <Divider/>
+      <TechStack/>
+      
+      {/* <ScrollVelocity
+        texts={['Skills']}
+        velocity={velocity}
+        className="custom-scroll-text "
+      />
       <ScrollReveal
         baseOpacity={0}
         enableBlur={true}
         baseRotation={5}
         blurStrength={10}
+        rotationEnd="bottom 80%"
+        wordAnimationEnd="bottom 80%"
       >
-        SKILLS
+
       </ScrollReveal>
+
       <Space />
       <ScrollVelocity
         texts={['Explore My Projects ↓']}
         velocity={velocity}
         className="custom-scroll-text"
       />
-      <div className="information h=[70vh] flex justify-center items-center gap-[40px]">
+      <div className="information h-[70vh] flex justify-center items-center gap-[40px]">
         <Card />
         <Card />
         <Card />
         <Card />
         <Card />
       </div>
+      <Space />
+      <ScrollFloat
+        animationDuration={1}
+        ease='back.inOut(2)'
+        scrollStart='center bottom+=50%'
+        scrollEnd='bottom bottom-=40%'
+        stagger={0.03}
+        >
 
+            <Card />
+        </ScrollFloat>
 
-
+      <Space /> */}
+            <div className="information h-[70vh] flex justify-center items-center gap-[40px]">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
     </>
   );
 }
