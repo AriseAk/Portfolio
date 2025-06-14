@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from './components/Navbar';
 import './App.css';
 import armas from "./assets/armas.jpg";
@@ -25,27 +25,46 @@ import { IoIosPhotos } from "react-icons/io";
 import { FaCode } from "react-icons/fa";
 import Contact from "./components/Contact";
 import ContactForm from './components/ContactForm';
+import gsap from "gsap";
 
 const velocity = 100;
 
-
 function App() {
   const items = [
-  { icon: <GoHomeFill size={24} />, label: "Home" },
-  { icon: <FaCode size={24} />, label: "Skills" },
-  { icon: <IoIosPhotos  size={24}/>, label: "Projects" },
-  { icon: <BsEnvelopeFill size={20}/>, label: "Contact" },
-];
+    { icon: <GoHomeFill size={24} />, label: "Home" },
+    { icon: <FaCode size={24} />, label: "Skills" },
+    { icon: <IoIosPhotos size={24} />, label: "Projects" },
+    { icon: <BsEnvelopeFill size={20} />, label: "Contact" },
+  ];
+
   const [loading, setLoading] = useState(true);
   const [linkedinHover, setLinkedinHover] = useState(false);
   const [githubHover, setGithubHover] = useState(false);
   const [gmailHover, setGmailHover] = useState(false);
-  const [showLabel, setShowLabel] = useState(false);
+
+  const firstRef = useRef(null);
+  const secondRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      gsap.fromTo(
+        firstRef.current,
+        { x: "-100%", opacity: 0 },
+        { x: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
+      );
+
+      gsap.fromTo(
+        secondRef.current,
+        { x: "100%", opacity: 0 },
+        { x: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 0.3 }
+      );
+    }
+  }, [loading]);
 
   if (loading) {
     return (
@@ -57,8 +76,9 @@ function App() {
 
   return (
     <>
-          <StickyDock items={items} baseSize={40} magnify={60}/>
+      <StickyDock items={items} baseSize={40} magnify={60} />
       <Navbar />
+
       <div className="container flex h-[25vh] justify-center -mt-[60px]">
         <div className="left flex justify-center items-center w-[25vw]">
           <div className="text-[#ffffe3] text-4xl font-bold"><DecryptedText text="FULL" /></div>
@@ -73,11 +93,18 @@ function App() {
         <DecryptedText text="CASEBOOK" />
       </div>
 
+      {/* Photo Section with Reveal Animation */}
       <div className="photo flex justify-center h-[45vh] gap-3">
-        <div className="first w-[20vw] h-full flex justify-center items-center ">
-          <img src={armas} alt="Profile" className="first w-full h-full object-cover " />
+        <div
+          className="first w-[20vw] h-full flex justify-center items-center"
+          ref={firstRef}
+        >
+          <img src={armas} alt="Profile" className="first w-full h-full object-cover" />
         </div>
-        <div className="second w-[40vw] h-full flex justify-center gap-3 flex-col">
+        <div
+          className="second w-[40vw] h-full flex justify-center gap-3 flex-col"
+          ref={secondRef}
+        >
           <span>
             Hello! I’m Akshay, a passionate and driven Developer with a love for creating innovative solutions.
             With 1 year of experience in software, I thrive on tackling new challenges and continuously expanding my skills.
@@ -144,16 +171,15 @@ function App() {
       </div>
 
       <Space />
-      <Divider/>
-      <TechStack/>
-      <Space></Space>
-      <Space></Space>
-      <Divider></Divider>
-      <Projects/>
-      <Space/>
       <Divider />
-
-      <Contact/>
+      <TechStack />
+      <Space />
+      <Space />
+      <Divider />
+      <Projects />
+      <Space />
+      <Divider />
+      <Contact />
     </>
   );
 }
