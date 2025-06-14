@@ -23,6 +23,8 @@ import { GoHomeFill } from "react-icons/go";
 import { BsEnvelopeFill } from "react-icons/bs";
 import { IoIosPhotos } from "react-icons/io";
 import { FaCode } from "react-icons/fa";
+import Contact from "./components/Contact";
+import ContactForm from './components/ContactForm';
 
 const velocity = 100;
 
@@ -55,6 +57,7 @@ function App() {
 
   return (
     <>
+          <StickyDock items={items} baseSize={40} magnify={60}/>
       <Navbar />
       <div className="container flex h-[25vh] justify-center -mt-[60px]">
         <div className="left flex justify-center items-center w-[25vw]">
@@ -147,10 +150,10 @@ function App() {
       <Space></Space>
       <Divider></Divider>
       <Projects/>
+      <Space/>
       <Divider />
-      <StickyDock items={items} baseSize={40} magnify={60}/>
 
-
+      <Contact/>
     </>
   );
 }

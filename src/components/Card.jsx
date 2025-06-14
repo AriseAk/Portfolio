@@ -4,12 +4,15 @@ import styled from 'styled-components';
 const Card = () => {
   return (
     <StyledWrapper>
-      <div className="card ">
-        <div className="card-details">
-          <p className="text-title">Card title</p>
-          <p className="text-body">Here are the details of the card</p>
+      <div className="card">
+        <div className="card-inner">
+          <div className="card-front">
+            <p>Front Side</p>
+          </div>
+          <div className="card-back">
+            <p>Back Side</p>
+          </div>
         </div>
-        <button className="card-button">More info</button>
       </div>
     </StyledWrapper>
   );
@@ -17,60 +20,54 @@ const Card = () => {
 
 const StyledWrapper = styled.div`
   .card {
-   width: 250px;
-   height: 300px;
-   border-radius: 20px;
-   background: #f5f5f5;
-   position: relative;
-   padding: 1.8rem;
-   border: 2px solid #c3c6ce;
-   transition: 0.5s ease-out;
-   overflow: visible;
+    width: 400px;
+    height: 300px;
+    perspective: 1000px;
   }
 
-  .card-details {
-   color: black;
-   height: 100%;
-   gap: .5em;
-   display: grid;
-   place-content: center;
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background:transparent;
+    transform-style: preserve-3d;
+    transition: transform 0.999s;
   }
 
-  .card-button {
-   transform: translate(-50%, 125%);
-   width: 60%;
-   border-radius: 1rem;
-   border: none;
-   background-color: #3d3d3d;
-   color: #fff;
-   font-size: 1rem;
-   padding: .5rem 1rem;
-   position: absolute;
-   left: 50%;
-   bottom: 0;
-   opacity: 0;
-   transition: 0.3s ease-out;
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
   }
 
-  .text-body {
-   color: rgb(134, 134, 134);
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
   }
 
-  /*Text*/
-  .text-title {
-   font-size: 1.5em;
-   font-weight: bold;
+  .card-front {
+    background-color: #10100e;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border: 10px solid #ffffe358;
+    border-radius: 10px;
+    justify-content: center;
+    font-size: 24px;
+    transform: rotateY(0deg);
   }
 
-  /*Hover*/
-  .card:hover {
-   border-color: #3d3d3d;
-   box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
-  }
-
-  .card:hover .card-button {
-   transform: translate(-50%, 50%);
-   opacity: 1;
+  .card-back {
+    background-color: #;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border: 10px solid #ffffe3;
+    border-radius: 10px;
+    justify-content: center;
+    font-size: 24px;
+    transform: rotateY(180deg);
   }`;
 
 export default Card;
