@@ -148,7 +148,7 @@ function App() {
       <Divider></Divider>
       <Projects/>
       <Divider />
-      <StickyDock items={items} />
+      <StickyDock items={items} baseSize={40} magnify={60}/>
 
 
     </>
