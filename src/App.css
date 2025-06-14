@@ -203,6 +203,10 @@ button:hover:after {
   display: inline-block;
 }
 
+.divider{
+  box-shadow: 2px 2px 20px 20ppx rgb(255, 255, 255);
+}
+
 @media (min-width: 768px) {
   .scroller {
     font-size: 5rem;

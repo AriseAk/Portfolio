@@ -2,6 +2,10 @@ import React, { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../TechStack.css';
+import { RiTailwindCssFill } from "react-icons/ri";
+import { FaGithub } from "react-icons/fa";
+import { SiExpress } from "react-icons/si";
+import ScrollReveal from './ScrollReveal';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,7 +81,15 @@ const TechStack = () => {
   return (
     <section ref={containerRef} className="tech-stack">
       <div className="tech-stack__container">
-        <h2 className="tech-stack__title">Tech Stack</h2>
+        <div className="tech-stack__title "><ScrollReveal
+  baseOpacity={0}
+  enableBlur={true}
+  baseRotation={5}
+  blurStrength={10}
+textClassName="tech-stack__title-text"
+>
+    <h1>Tech Stack</h1>
+</ScrollReveal></div>
 
         {/* FRONTEND */}
         <div className="tech-category">
@@ -105,7 +117,7 @@ const TechStack = () => {
               <span className="tech-item__name">CSS3</span>
             </div>
             <div className="tech-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" className="tech-item__icon" alt="Tailwind CSS"/>
+              <RiTailwindCssFill className='w-[30px] h-[30px]'/>
               <span className="tech-item__name">Tailwind CSS</span>
             </div>
             <div className="tech-item">
@@ -129,7 +141,7 @@ const TechStack = () => {
               <span className="tech-item__name">Node.js</span>
             </div>
             <div className="tech-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" className="tech-item__icon" alt="Express"/>
+              <SiExpress className='w-[30px] h-[30px]'/>
               <span className="tech-item__name">Express</span>
             </div>
             <div className="tech-item">
@@ -161,7 +173,7 @@ const TechStack = () => {
               <span className="tech-item__name">Git</span>
             </div>
             <div className="tech-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" className="tech-item__icon" alt="GitHub"/>
+              <FaGithub className='w-[30px] h-[30px]' />
               <span className="tech-item__name">GitHub</span>
             </div>
             <div className="tech-item">

@@ -1,16 +1,24 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Playfair Display', serif;
+
   background: #10100e;
   color: #ffffe3;
+
 }
 
 .tech-stack {
-  background-color: #0d0d0d;
+
+  background-color: #10100e;
   height: 100vh; 
 }
 
@@ -27,14 +35,21 @@ body {
   text-align: center;
   font-size: 70px;
   font-weight: bold;
-    font-family: 'Playfair Display', serif;
+  font-family: "Major Mono Display", monospace;
   margin-bottom: 2rem;
+}
+.tech-stack__title-text{
+  font-family: "Major Mono Display", monospace;
+  font-size: 70px;
+  text-align: center;
 }
 
 .tech-category {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
+   opacity: 0; /* Initial state for animation */
+  transform-origin: center bottom;
 }
 
 .tech-category__label {
@@ -50,6 +65,9 @@ body {
   padding-left: 1.5rem;
   transition: color 0.3s;
   cursor: pointer;
+      font-family: "Poppins", sans-serif;
+  
+
 }
 
 .tech-category__label-inner:hover {
@@ -68,10 +86,12 @@ body {
 }
 
 .tech-category__items {
-  width: 80%;
+  grid-column: 1 / 4;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
+  perspective: 1200px;
 }
 
 .tech-item {
@@ -86,6 +106,9 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, background-color 0.2s ease;
+  opacity: 0; /* Initial state for animation */
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
 }
 
 

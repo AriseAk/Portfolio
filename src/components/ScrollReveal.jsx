@@ -1,8 +1,8 @@
 import { useEffect, useRef, useMemo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-import '../App.css';
+import "../App.css";
+import React from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,105 +12,110 @@ const ScrollReveal = ({
   enableBlur = true,
   baseOpacity = 0.1,
   baseRotation = 3,
-  blurStrength = 4,
+  blurStrength = 9,
   containerClassName = "",
   textClassName = "",
-  rotationEnd = "bottom bottom",
-  wordAnimationEnd = "bottom bottom"
+  rotationEnd = "+=400",
+  wordAnimationEnd = "+=500",
+  as: Component = "div"
 }) => {
   const containerRef = useRef(null);
 
+  const isString = typeof children === 'string';
+
   const splitText = useMemo(() => {
-    const text = typeof children === 'string' ? children : '';
-    return text.split(/(\s+)/).map((word, index) => {
+    if (!isString) return null;
+    return children.split(/(\s+)/).map((word, index) => {
       if (word.match(/^\s+$/)) return word;
       return (
-        <span className="word" key={index}>
+        <span className="word" key={index} style={{ display: 'inline-block' }}>
           {word}
         </span>
       );
     });
-  }, [children]);
+  }, [children, isString]);
 
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
-    const scroller =
-      scrollContainerRef && scrollContainerRef.current
-        ? scrollContainerRef.current
-        : window;
+    const scroller = scrollContainerRef?.current || window;
 
-    // Rotation animation
-    gsap.fromTo(
-      el,
+    // Rotation animation for entire container
+    gsap.fromTo(el,
       { transformOrigin: '0% 50%', rotate: baseRotation },
       {
-        ease: 'none',
         rotate: 0,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: el,
           scroller,
-          start: 'top 80%',
+          start: 'top 90%',
           end: rotationEnd,
-          scrub: true,
-        },
+          scrub: 1,
+          markers: false
+        }
       }
     );
 
     const wordElements = el.querySelectorAll('.word');
-
-    // Opacity animation
-    gsap.fromTo(
-      wordElements,
-      { opacity: baseOpacity, willChange: 'opacity' },
-      {
-        ease: 'none',
-        opacity: 1,
-        stagger: 0.05,
-        scrollTrigger: {
-          trigger: el,
-          scroller,
-          start: 'top 80%',
-          end: wordAnimationEnd,
-          scrub: true,
-        },
-      }
-    );
-
-    // Blur animation
-    if (enableBlur) {
-      gsap.fromTo(
-        wordElements,
-        { filter: `blur(${blurStrength}px)` },
+    if (wordElements.length > 0) {
+      // Opacity + position animation
+      gsap.fromTo(wordElements,
+        { opacity: baseOpacity, y: 20 },
         {
-          ease: 'none',
-          filter: 'blur(0px)',
-          stagger: 0.05,
+          opacity: 1,
+          y: 0,
+          stagger: 0.1,
+          duration: 0.8,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: el,
             scroller,
-            start: 'top 80%',
+            start: 'top 85%',
             end: wordAnimationEnd,
-            scrub: true,
-          },
+            scrub: 1
+          }
         }
       );
+
+      // Optional blur effect
+      if (enableBlur) {
+        gsap.fromTo(wordElements,
+          { filter: `blur(${blurStrength}px)` },
+          {
+            filter: 'blur(0px)',
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: el,
+              scroller,
+              start: 'top 85%',
+              end: wordAnimationEnd,
+              scrub: 1
+            }
+          }
+        );
+      }
     }
 
-    // Refresh ScrollTrigger to recalc positions
-    ScrollTrigger.refresh();
+    return () => ScrollTrigger.getAll().forEach(t => t.kill());
+  }, [scrollContainerRef, baseRotation, baseOpacity, rotationEnd, wordAnimationEnd, blurStrength, enableBlur]);
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, [scrollContainerRef, enableBlur, baseRotation, baseOpacity, rotationEnd, wordAnimationEnd, blurStrength]);
+ return (
+  <Component ref={containerRef} className={`scroll-reveal ${containerClassName}`}>
+    {isString ? (
+      <p className={`scroll-reveal-text ${textClassName}`}>
+        {splitText}
+      </p>
+    ) : (
+      React.cloneElement(children, {
+        className: `${children.props.className || ''} ${textClassName}`.trim()
+      })
+    )}
+  </Component>
+);
 
-  return (
-    <h2 ref={containerRef} className={`scroll-reveal ${containerClassName}`}>
-      <p className={`scroll-reveal-text ${textClassName}`}>{splitText}</p>
-    </h2>
-  );
 };
 
 export default ScrollReveal;
