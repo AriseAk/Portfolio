@@ -1,0 +1,42 @@
+.sticky-dock {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+
+}
+
+.sticky-dock-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffe3;
+
+  cursor: pointer;
+  transition: background 0.3s;
+  border-radius: 20px;
+}
+.sticky-dock-item img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sticky-dock-item:hover {
+  background: #ffffe358;
+}
+.sticky-dock-item svg {
+
+  border-radius: 10px;         
+  width: 70%;                 
+  height: 70%;
+}
+

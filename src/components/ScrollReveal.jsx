@@ -12,7 +12,7 @@ const ScrollReveal = ({
   enableBlur = true,
   baseOpacity = 0.1,
   baseRotation = 3,
-  blurStrength = 9,
+  blurStrength = 8,
   containerClassName = "",
   textClassName = "",
   rotationEnd = "+=400",
@@ -66,7 +66,7 @@ const ScrollReveal = ({
         {
           opacity: 1,
           y: 0,
-          stagger: 0.1,
+          stagger: 0.01,
           duration: 0.8,
           ease: 'power2.out',
           scrollTrigger: {
@@ -84,8 +84,8 @@ const ScrollReveal = ({
         gsap.fromTo(wordElements,
           { filter: `blur(${blurStrength}px)` },
           {
-            filter: 'blur(0px)',
-            stagger: 0.1,
+            filter: 'blur(10px)',
+            stagger: 0.4,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: el,

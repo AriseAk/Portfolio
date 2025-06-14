@@ -32,16 +32,17 @@ body {
 }
 
 .tech-stack__title {
-  text-align: center;
+
   font-size: 70px;
-  font-weight: bold;
+
   font-family: "Major Mono Display", monospace;
   margin-bottom: 2rem;
 }
 .tech-stack__title-text{
   font-family: "Major Mono Display", monospace;
   font-size: 70px;
-  text-align: center;
+  text-align:start;
+
 }
 
 .tech-category {
@@ -126,4 +127,19 @@ body {
 .tech-item__name {
   font-size: 1.125rem;
     background-color: transparent;
+}
+
+.dock-label {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffe3;
+  color: #111;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 999;
 }

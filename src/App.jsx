@@ -16,13 +16,29 @@ import ScrollFloat from "./components/ScrollFloat";
 import Divider from "./components/Divider";
 import Loader from "./components/Loader";
 import TechStack from "./components/TechStack";
+import Projects from "./components/Projects";
+import StickyDock from "./components/StickyDock";
+import { FaGithub, FaReact, FaPython } from "react-icons/fa";
+import { GoHomeFill } from "react-icons/go";
+import { BsEnvelopeFill } from "react-icons/bs";
+import { IoIosPhotos } from "react-icons/io";
+import { FaCode } from "react-icons/fa";
+
 const velocity = 100;
 
+
 function App() {
+  const items = [
+  { icon: <GoHomeFill size={24} />, label: "Home" },
+  { icon: <FaCode size={24} />, label: "Skills" },
+  { icon: <IoIosPhotos  size={24}/>, label: "Projects" },
+  { icon: <BsEnvelopeFill size={20}/>, label: "Contact" },
+];
   const [loading, setLoading] = useState(true);
   const [linkedinHover, setLinkedinHover] = useState(false);
   const [githubHover, setGithubHover] = useState(false);
   const [gmailHover, setGmailHover] = useState(false);
+  const [showLabel, setShowLabel] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
@@ -127,56 +143,14 @@ function App() {
       <Space />
       <Divider/>
       <TechStack/>
-      
-      {/* <ScrollVelocity
-        texts={['Skills']}
-        velocity={velocity}
-        className="custom-scroll-text "
-      />
-      <ScrollReveal
-        baseOpacity={0}
-        enableBlur={true}
-        baseRotation={5}
-        blurStrength={10}
-        rotationEnd="bottom 80%"
-        wordAnimationEnd="bottom 80%"
-      >
+      <Space></Space>
+      <Space></Space>
+      <Divider></Divider>
+      <Projects/>
+      <Divider />
+      <StickyDock items={items} />
 
-      </ScrollReveal>
 
-      <Space />
-      <ScrollVelocity
-        texts={['Explore My Projects ↓']}
-        velocity={velocity}
-        className="custom-scroll-text"
-      />
-      <div className="information h-[70vh] flex justify-center items-center gap-[40px]">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div>
-      <Space />
-      <ScrollFloat
-        animationDuration={1}
-        ease='back.inOut(2)'
-        scrollStart='center bottom+=50%'
-        scrollEnd='bottom bottom-=40%'
-        stagger={0.03}
-        >
-
-            <Card />
-        </ScrollFloat>
-
-      <Space /> */}
-            <div className="information h-[70vh] flex justify-center items-center gap-[40px]">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div>
     </>
   );
 }
