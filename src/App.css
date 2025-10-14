@@ -15,7 +15,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
 
-
+html {
+    scroll-behavior: smooth;
+}
 
 html::-webkit-scrollbar {
   width: 15px;
@@ -248,8 +250,54 @@ button:hover:after {
   width: 80vw;
 }
 
+.text-type {
+  display: inline-block;
+  white-space: pre-wrap;
+  color: #ffffe3!important; 
+  letter-spacing: 5px;
+}
+
+.text-type__cursor {
+  margin-left: 0.25rem;
+  display: inline-block;
+  opacity: 1;
+}
+
+.text-type__cursor--hidden {
+  display: none;
+}
 
 
+.my-custom-color {
+
+  color: #ffffe3!important; 
+}
+
+#contact-section {
+  /* Ensure the section takes up sufficient height to show the gradient */
+  min-height: 100vh; /* Make sure it's at least full viewport height */
+  display: flex; /* Or whatever display properties you need for content alignment */
+  flex-direction: column;
+  align-items: center; /* Adjust as needed for your content */
+  justify-content: center; /* Adjust as needed for your content */
+
+  /* Apply the gradient: dark at top, light at bottom */
+  background: linear-gradient(to bottom, 
+                              #10100e,
+                              #1a1a17, /* Darker shade at the top */
+                              #353530); /* Lighter shade at the bottom */
+  
+  /* Optional: Adjust color stops if you want the transition to happen faster/slower */
+  /* background: linear-gradient(to bottom, 
+                              #2c3e50 0%,  
+                              #ecf0f1 100%); */
+}
+
+/* You might also need to ensure that the immediate children of the body/html 
+   don't have conflicting background colors that hide this gradient. */
+body {
+    background-color: transparent; /* Or remove any default background if it conflicts */
+}
 
 @media (min-width: 768px) {
   .scroller {

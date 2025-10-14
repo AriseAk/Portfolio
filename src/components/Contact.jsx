@@ -41,7 +41,7 @@ const Contact = () => {
 
   return (
     <div ref={containerRef}>
-      <div className="projects-cards h-[100vh] flex ">
+      <div className="projects-cards h-[70vh] flex rounded-2xl ">
         <div
           className="title text-7xl text-[#ffffe3] ml-[40px] mt-[40px]"
           ref={titleRef}

@@ -14,6 +14,7 @@ import Card from "./components/Card";
 import ScrollReveal from "./components/ScrollReveal";
 import ScrollFloat from "./components/ScrollFloat";
 import Divider from "./components/Divider";
+import Textype from "./components/Textype";
 import Loader from "./components/Loader";
 import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
@@ -30,12 +31,13 @@ import gsap from "gsap";
 const velocity = 100;
 
 function App() {
-  const items = [
-    { icon: <GoHomeFill size={24} />, label: "Home" },
-    { icon: <FaCode size={24} />, label: "Skills" },
-    { icon: <IoIosPhotos size={24} />, label: "Projects" },
-    { icon: <BsEnvelopeFill size={20} />, label: "Contact" },
-  ];
+const items = [
+  // Add the href property pointing to the section ID
+  { icon: <GoHomeFill size={24} />, label: "Home", href: "#home-section" }, 
+  { icon: <FaCode size={24} />, label: "Skills", href: "#skills-section" }, 
+  { icon: <IoIosPhotos size={24} />, label: "Projects", href: "#projects-section" }, 
+  { icon: <BsEnvelopeFill size={20} />, label: "Contact", href: "#contact-section" }, 
+];
 
   const [loading, setLoading] = useState(true);
   const [linkedinHover, setLinkedinHover] = useState(false);
@@ -77,12 +79,21 @@ function App() {
   return (
     <>
       <StickyDock items={items} baseSize={40} magnify={60} />
-      <Navbar />
+      <div id="home-section"><Navbar /></div>
 
-      <div className="container flex h-[25vh] justify-center -mt-[60px]">
+
+      <div className="container flex h-[25vh] justify-center -mt-[60px]" >
         <div className="left flex justify-center items-center w-[25vw]">
-          <div className="text-[#ffffe3] text-4xl font-bold"><DecryptedText text="FULL" /></div>
-          <div className="inside outline text-4xl"><DecryptedText text="STACK" /></div>
+          <div className="text-[#ffffe3] text-4xl font-bold"><Textype
+            text={["FULL STACK", ""]}
+            textColors={['#ffffe3']}
+            typingSpeed={200}
+            pauseDuration={800}
+            showCursor={true}
+            className="my-custom-color"
+            cursorCharacter="|"
+          /></div>
+
         </div>
         <div className="right w-[60vw] flex justify-center items-center text-[140px] font-bold text-[#ffffe3]">
           <DecryptedText text="DEVELOPER" />
@@ -96,10 +107,10 @@ function App() {
       {/* Photo Section with Reveal Animation */}
       <div className="photo flex justify-center h-[45vh] gap-3">
         <div
-          className="first w-[20vw] h-full flex justify-center items-center"
+          className="first w-[20vw] h-full flex justify-center items-center rounded-xl"
           ref={firstRef}
         >
-          <img src={armas} alt="Profile" className="first w-full h-full object-cover" />
+          <img src={armas} alt="Profile" className="first w-full h-full object-cover " />
         </div>
         <div
           className="second w-[40vw] h-full flex justify-center gap-3 flex-col"
@@ -172,14 +183,23 @@ function App() {
 
       <Space />
       <Divider />
-      <TechStack />
+      <div id="skills-section"> {/* Added a wrapper div for clarity, or add the ID to TechStack's internal div */}
+        <TechStack />
+      </div>
       <Space />
       <Space />
       <Divider />
-      <Projects />
+      <div id="projects-section">
+        <Projects />
+      </div>
       <Space />
-      <Divider />
-      <Contact />
+      <Space />
+
+      <div id="contact-section">
+        <Contact />
+      </div>
+
+
     </>
   );
 }

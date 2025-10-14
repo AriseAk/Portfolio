@@ -11,6 +11,7 @@ const StickyDockItem = ({
   baseSize = 50,
   magnify = 80,
   range = 100,
+  href,
 }) => {
   const ref = useRef(null);
   const [hovered, setHovered] = useState(false);
@@ -35,7 +36,8 @@ const StickyDockItem = ({
   });
 
   return (
-    <div
+    <a
+    href={href}
       ref={ref}
       className="sticky-dock-item-with-label"
       onMouseEnter={() => setHovered(true)}
@@ -58,7 +60,7 @@ const StickyDockItem = ({
       <motion.div style={{ width: size, height: size }} className="sticky-icon">
         {icon}
       </motion.div>
-    </div>
+    </a>
   );
 };
 
@@ -81,6 +83,7 @@ export default function StickyDock({
           key={index}
           icon={item.icon}
           label={item.label}
+                    href={item.href} 
           mouseY={mouseY}
           baseSize={baseSize}
           magnify={magnify}
