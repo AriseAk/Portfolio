@@ -281,7 +281,8 @@ button:hover:after {
 
 #contact-section {
   /* Ensure the section takes up sufficient height to show the gradient */
-  min-height: 100vh; /* Make sure it's at least full viewport height */
+  min-height: 100vh;
+  min-width: 100vw; /* Make sure it's at least full viewport height */
   display: flex; /* Or whatever display properties you need for content alignment */
   flex-direction: column;
   align-items: center; /* Adjust as needed for your content */
@@ -290,7 +291,8 @@ button:hover:after {
   /* Apply the gradient: dark at top, light at bottom */
   background: linear-gradient(to bottom, 
                               #10100e,
-                              #1a1a17, /* Darker shade at the top */
+                              
+                              #21211d, /* Darker shade at the top */
                               #353530); /* Lighter shade at the bottom */
   
   /* Optional: Adjust color stops if you want the transition to happen faster/slower */

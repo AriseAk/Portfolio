@@ -20,7 +20,7 @@ const Contact = () => {
           filter: 'blur(6px)',
         },
         {
-          x: '0vw',         // Slide to natural position (left)
+          x: 0,         // Slide to natural position (left)
           opacity: 1,
           filter: 'blur(0px)',
           duration: 2.5,
@@ -41,9 +41,9 @@ const Contact = () => {
 
   return (
     <div ref={containerRef}>
-      <div className="projects-cards h-[70vh] flex rounded-2xl ">
+      <div className="projects-cards w-[80vw] h-[60vh] flex rounded-[20px] ">
         <div
-          className="title text-7xl text-[#ffffe3] ml-[40px] mt-[40px]"
+          className="title text-7xl text-[#ffffe3] bg-transparent rounded-[20px]"
           ref={titleRef}
         >
           Contact

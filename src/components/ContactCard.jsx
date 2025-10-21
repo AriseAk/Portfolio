@@ -1,80 +1,91 @@
-
 import React from 'react';
-import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6'; // Used for X/Twitter icon
-
-const contactLinks = [
-  {
-    icon: <FaGithub size={24} className="text-gray-700" />,
-    label: 'GitHub',
-    username: 'cryskram',
-    href: 'https://github.com/cryskram',
-  },
-  {
-    icon: <FaLinkedin size={24} className="text-blue-600" />,
-    label: 'LinkedIn',
-    username: 'vageeshgn',
-    href: 'https://linkedin.com/in/vageeshgn',
-  },
-  {
-    icon: <FaInstagram size={24} className="text-pink-600" />,
-    label: 'Instagram',
-    username: 'vageesh404',
-    href: 'https://instagram.com/vageesh404',
-  },
-  {
-    icon: <FaXTwitter size={24} className="text-gray-800" />,
-    label: 'X / Twitter',
-    username: 'gn_vageesh',
-    href: 'https://twitter.com/gn_vageesh',
-  },
-  {
-    icon: <FaEnvelope size={24} className="text-red-500" />,
-    label: 'Email',
-    username: 'vageeshgn2005@gmail.com',
-    href: 'mailto:vageeshgn2005@gmail.com',
-    fullWidth: true, // Marker for single-column layout
-  },
-];
+import '../App.css';
+import { FaGithub } from 'react-icons/fa';
+import { IoLogoLinkedin } from 'react-icons/io5'; // Ionicons v5
+import { BiLogoGmail } from 'react-icons/bi';
+import { IoDocumentText } from 'react-icons/io5'; // Document icon
 
 const ContactCard = () => {
+  // Reusable class string for consistent item styling
+  const gridItemClasses =
+    'bg-[#10100e] text-[#ffffe3] p-4 rounded-lg shadow-md hover:scale-[1.03] transition h-24 border border-[#ffffe3]';
+
   return (
+    <div className="w-[60vw] h-[60vh] rounded-[15px] relative mx-auto bg-[#ffffe3]">
+      {/* Title */}
+      <div className="upper flex justify-center text-[40px] card-component-button bg-transparent text-[#1d1d1a]">Let's Connect</div>
 
-    <div className="bg-white p-6 md:p-10 rounded-2xl shadow-2xl max-w-xl w-full mx-auto my-10 border border-gray-100">
-
-      <div className="text-center mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">Let's Connect</h2>
-        <p className="text-gray-600 text-sm md:text-base px-2">
-          Whether it's a collaboration, opportunity, or just a friendly chat - my inbox is open!
-        </p>
+      {/* Description */}
+      <div className="middle flex justify-center text-[15px] card-component-button3 mb-8 text-center px-4 bg-transparent text-[#1d1d1a]">
+        My inbox is open for anything—whether it's professional inquiries, potential projects, or casual chats. Reach out today!
       </div>
 
+      {/* 2×2 GRID SECTION */}
+      <div className="grid grid-cols-2 gap-4 mx-auto w-3/4 bg-transparent text-[#1d1d1a]">
+        {/* Grid Item 1: Email */}
+        <a
+          href="mailto:contact@akshay.dev"
+          className={`${gridItemClasses} flex items-center justify-start gap-4 bg-transparent text-[#1d1d1a]`}
+          aria-label="Email Akshay at contact@akshay.dev"
+        >
+          <BiLogoGmail className="w-[40px] h-[40px] flex-shrink-0 bg-transparent text-[#1d1d1a]" />
+          <div className="flex flex-col justify-center bg-transparent text-[#1d1d1a] ">
+            <span className="font-bold cursor-pointer text-base bg-transparent text-[#1d1d1a] card-component-button">Email</span>
+            <span className="text-xs bg-transparent text-[#1d1d1a] card-component-button1">akshaybhat093@gmail.com</span>
+          </div>
+        </a>
 
-      <div className="grid grid-cols-2 gap-4">
-        {contactLinks.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-           
-            className={`
-              flex flex-col p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition duration-150
-              ${link.fullWidth ? 'col-span-2' : 'col-span-2 md:col-span-1'}
-            `}
-          >
-            <div className="flex items-center mb-1">
-              {link.icon}
-              <span className="ml-3 text-lg font-semibold text-gray-700">{link.label}</span>
-            </div>
-            <p className="text-sm text-gray-500 pl-9 break-all">{link.username}</p>
-          </a>
-        ))}
+        {/* Grid Item 2: LinkedIn */}
+        <a
+          className={`${gridItemClasses} flex items-center justify-start gap-4 bg-transparent text-[#1d1d1a]`}
+          href="www.linkedin.com/in/akshay-bhat-a2900a333"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit LinkedIn profile at linkedin.com/in/akshaydev"
+        >
+          <IoLogoLinkedin className="w-[40px] h-[40px] flex-shrink-0 bg-transparent text-[#1d1d1a]" />
+          <div className="flex flex-col justify-center bg-transparent text-[#1d1d1a]">
+            <span className="font-bold cursor-pointer text-base bg-transparent text-[#1d1d1a] card-component-button">LinkedIn</span>
+            <span className="text-xs bg-transparent text-[#1d1d1a] card-component-button1">Akshay Bhat</span>
+          </div>
+        </a>
+
+        {/* Grid Item 3: GitHub */}
+        <a
+          className={`${gridItemClasses} flex items-center justify-start gap-4 bg-transparent text-[#1d1d1a]`}
+          href="https://github.com/AriseAk"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit GitHub profile at github.com/AriseAk"
+        >
+          <FaGithub className="w-[40px] h-[40px] flex-shrink-0 bg-transparent text-[#1d1d1a]" />
+          <div className="flex flex-col justify-center bg-transparent text-[#1d1d1a]">
+            <span className="font-bold cursor-pointer text-base bg-transparent text-[#1d1d1a] card-component-button">GitHub</span>
+            <span className="text-xs bg-transparent text-[#1d1d1a] card-component-button1">AriseAk</span>
+          </div>
+        </a>
+
+        {/* Grid Item 4: Resume/CV */}
+        <a
+          className={`${gridItemClasses} flex items-center justify-start gap-4 bg-transparent text-[#1d1d1a]`}
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View or download resume PDF"
+        >
+          <IoDocumentText className="w-[40px] h-[40px] flex-shrink-0 bg-transparent text-[#1d1d1a]" />
+          <div className="flex flex-col justify-center bg-transparent text-[#1d1d1a]">
+            <span className="font-bold cursor-pointer text-base bg-transparent text-[#1d1d1a] card-component-button">View Resume</span>
+            <span className="text-xs bg-transparent text-[#1d1d1a] card-component-button1">Download PDF</span>
+          </div>
+        </a>
       </div>
+      {/* End Grid */}
 
-      <p className="text-center text-xs text-gray-400 mt-8">
-        No spam, no bots - just genuine connections
-      </p>
+      {/* Bottom-centered footer */}
+      <footer className="absolute bottom-0 left-0 w-full text-center p-4 bg-transparent text-[#1d1d1a]">
+        &copy; 2025 Akshay Bhat. All rights reserved.
+      </footer>
     </div>
   );
 };

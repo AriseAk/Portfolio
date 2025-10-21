@@ -29,6 +29,8 @@ import { FaCode } from "react-icons/fa";
 import Contact from "./components/Contact";
 import ContactForm from './components/ContactForm';
 import gsap from "gsap";
+import ContactCard from "./components/ContactCard";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const velocity = 100;
 
@@ -48,6 +50,9 @@ const myProject = {
         live: "https://my-live-site.com/ecommerce",
         repo: "https://github.com/myusername/ecommerce-repo"
     };
+
+
+
     const [loading, setLoading] = useState(true);
     const [linkedinHover, setLinkedinHover] = useState(false);
     const [githubHover, setGithubHover] = useState(false);
@@ -206,7 +211,7 @@ const myProject = {
             <Space />
 
             <div id="contact-section">
-                
+<ContactCard/>
             </div>
 
 
