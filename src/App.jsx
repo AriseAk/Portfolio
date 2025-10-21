@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+// Corrected import: Added useState and useRef
+import React, { useState, useEffect, useRef } from "react"; 
 import Navbar from './components/Navbar';
 import './App.css';
 import armas from "./assets/armas.jpg";
@@ -17,6 +18,7 @@ import Divider from "./components/Divider";
 import Textype from "./components/Textype";
 import Loader from "./components/Loader";
 import TechStack from "./components/TechStack";
+import ProjectsSection from './components/ProjectsSection';
 import Projects from "./components/Projects";
 import StickyDock from "./components/StickyDock";
 import { FaGithub, FaReact, FaPython } from "react-icons/fa";
@@ -32,176 +34,184 @@ const velocity = 100;
 
 function App() {
 const items = [
-  // Add the href property pointing to the section ID
-  { icon: <GoHomeFill size={24} />, label: "Home", href: "#home-section" }, 
-  { icon: <FaCode size={24} />, label: "Skills", href: "#skills-section" }, 
-  { icon: <IoIosPhotos size={24} />, label: "Projects", href: "#projects-section" }, 
-  { icon: <BsEnvelopeFill size={20} />, label: "Contact", href: "#contact-section" }, 
+    // Add the href property pointing to the section ID
+    { icon: <GoHomeFill size={24} />, label: "Home", href: "#home-section" },
+    { icon: <FaCode size={24} />, label: "Skills", href: "#skills-section" },
+    { icon: <IoIosPhotos size={24} />, label: "Projects", href: "#projects-section" },
+    { icon: <BsEnvelopeFill size={20} />, label: "Contact", href: "#contact-section" },
 ];
+const myProject = {
+        image: "path/to/my-ecommerce-screenshot.png",
+        name: "E-Commerce Mockup Site",
+        summary: "A full-stack e-commerce application featuring product browsing, cart functionality, and user authentication.",
+        stack: "React, Redux, Styled Components, Express, PostgreSQL",
+        live: "https://my-live-site.com/ecommerce",
+        repo: "https://github.com/myusername/ecommerce-repo"
+    };
+    const [loading, setLoading] = useState(true);
+    const [linkedinHover, setLinkedinHover] = useState(false);
+    const [githubHover, setGithubHover] = useState(false);
+    const [gmailHover, setGmailHover] = useState(false);
 
-  const [loading, setLoading] = useState(true);
-  const [linkedinHover, setLinkedinHover] = useState(false);
-  const [githubHover, setGithubHover] = useState(false);
-  const [gmailHover, setGmailHover] = useState(false);
+    const firstRef = useRef(null);
+    const secondRef = useRef(null);
 
-  const firstRef = useRef(null);
-  const secondRef = useRef(null);
+    useEffect(() => {
+        const timer = setTimeout(() => setLoading(false), 2000);
+        return () => clearTimeout(timer);
+    }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
+    useEffect(() => {
+        if (!loading) {
+            gsap.fromTo(
+                firstRef.current,
+                { x: "-100%", opacity: 0 },
+                { x: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
+            );
 
-  useEffect(() => {
-    if (!loading) {
-      gsap.fromTo(
-        firstRef.current,
-        { x: "-100%", opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
-      );
+            gsap.fromTo(
+                secondRef.current,
+                { x: "100%", opacity: 0 },
+                { x: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 0.3 }
+            );
+        }
+    }, [loading]);
 
-      gsap.fromTo(
-        secondRef.current,
-        { x: "100%", opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 0.3 }
-      );
+    if (loading) {
+        return (
+            <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
+                <Loader />
+            </div>
+        );
     }
-  }, [loading]);
 
-  if (loading) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
-        <Loader />
-      </div>
+        <>
+            <StickyDock items={items} baseSize={40} magnify={60} />
+            <div id="home-section"><Navbar /></div>
+
+
+            <div className="container flex h-[25vh] justify-center -mt-[60px]" >
+                <div className="left flex justify-center items-center w-[25vw]">
+                    <div className="text-[#ffffe3] text-4xl font-bold"><Textype
+                        text={["FULL STACK", ""]}
+                        textColors={['#ffffe3']}
+                        typingSpeed={200}
+                        pauseDuration={800}
+                        showCursor={true}
+                        className="my-custom-color"
+                        cursorCharacter="|"
+                    /></div>
+
+                </div>
+                <div className="right w-[60vw] flex justify-center items-center text-[140px] font-bold text-[#ffffe3]">
+                    <DecryptedText text="DEVELOPER" />
+                </div>
+            </div>
+
+            <div className="inside box flex w-[70vw] justify-center text-[140px] font-bold outline -mt-[50px]">
+                <DecryptedText text="CASEBOOK" />
+            </div>
+
+            {/* Photo Section with Reveal Animation */}
+            <div className="photo flex justify-center h-[45vh] gap-3">
+                <div
+                    className="first w-[20vw] h-full flex justify-center items-center rounded-xl"
+                    ref={firstRef}
+                >
+                    <img src={armas} alt="Profile" className="first w-full h-full object-cover " />
+                </div>
+                <div
+                    className="second w-[40vw] h-full flex justify-center gap-3 flex-col"
+                    ref={secondRef}
+                >
+                    <span>
+                        Hello! I’m Akshay, a passionate and driven Developer with a love for creating innovative solutions.
+                        With 1 year of experience in software, I thrive on tackling new challenges and continuously expanding my skills.
+                        <br />
+                        I believe in the power of lifelong learning and enjoy working with others to bring ideas to life.
+                        Whether I’m building, or exploring the latest trends in Tech, I’m always eager to make a positive impact.
+                        <br />
+                        Let’s connect and create something amazing together!
+                    </span>
+                    <div className="resume flex">
+                        <button type="button" className="btn cursor-pointer">Resume</button>
+                    </div>
+                    <div className="links pl-[50px] w-[10vw] flex flex-row justify-center items-center gap-6">
+                        <a
+                            href="#linkedin"
+                            onMouseEnter={() => setLinkedinHover(true)}
+                            onMouseLeave={() => setLinkedinHover(false)}
+                            className="relative flex flex-col items-center"
+                        >
+                            <IoLogoLinkedin className="size" />
+                            <div className="absolute top-[110%]">
+                                <BlurText
+                                    text="LinkedIn"
+                                    delay={100}
+                                    trigger={linkedinHover}
+                                    className="text-sm"
+                                />
+                            </div>
+                        </a>
+                        <a
+                            href="#github"
+                            onMouseEnter={() => setGithubHover(true)}
+                            onMouseLeave={() => setGithubHover(false)}
+                            className="relative flex flex-col items-center"
+                        >
+                            <IoLogoGithub className="size" />
+                            <div className="absolute top-[110%]">
+                                <BlurText
+                                    text="GitHub"
+                                    delay={100}
+                                    trigger={githubHover}
+                                    className="text-sm"
+                                />
+                            </div>
+                        </a>
+                        <a
+                            href="mailto:your-email@example.com"
+                            onMouseEnter={() => setGmailHover(true)}
+                            onMouseLeave={() => setGmailHover(false)}
+                            className="relative flex flex-col items-center"
+                        >
+                            <BiLogoGmail className="size" />
+                            <div className="absolute top-[110%]">
+                                <BlurText
+                                    text="Email"
+                                    delay={100}
+                                    trigger={gmailHover}
+                                    className="text-sm"
+                                />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <Space />
+            <Divider />
+            <div id="skills-section">
+                <TechStack />
+            </div>
+            <Space />
+            <Space />
+            <Divider />
+            
+            <div id="projects-section">
+                <ProjectsSection/>
+            </div>
+            <Space />
+            <Space />
+
+            <div id="contact-section">
+                
+            </div>
+
+
+        </>
     );
-  }
-
-  return (
-    <>
-      <StickyDock items={items} baseSize={40} magnify={60} />
-      <div id="home-section"><Navbar /></div>
-
-
-      <div className="container flex h-[25vh] justify-center -mt-[60px]" >
-        <div className="left flex justify-center items-center w-[25vw]">
-          <div className="text-[#ffffe3] text-4xl font-bold"><Textype
-            text={["FULL STACK", ""]}
-            textColors={['#ffffe3']}
-            typingSpeed={200}
-            pauseDuration={800}
-            showCursor={true}
-            className="my-custom-color"
-            cursorCharacter="|"
-          /></div>
-
-        </div>
-        <div className="right w-[60vw] flex justify-center items-center text-[140px] font-bold text-[#ffffe3]">
-          <DecryptedText text="DEVELOPER" />
-        </div>
-      </div>
-
-      <div className="inside box flex w-[70vw] justify-center text-[140px] font-bold outline -mt-[50px]">
-        <DecryptedText text="CASEBOOK" />
-      </div>
-
-      {/* Photo Section with Reveal Animation */}
-      <div className="photo flex justify-center h-[45vh] gap-3">
-        <div
-          className="first w-[20vw] h-full flex justify-center items-center rounded-xl"
-          ref={firstRef}
-        >
-          <img src={armas} alt="Profile" className="first w-full h-full object-cover " />
-        </div>
-        <div
-          className="second w-[40vw] h-full flex justify-center gap-3 flex-col"
-          ref={secondRef}
-        >
-          <span>
-            Hello! I’m Akshay, a passionate and driven Developer with a love for creating innovative solutions.
-            With 1 year of experience in software, I thrive on tackling new challenges and continuously expanding my skills.
-            <br />
-            I believe in the power of lifelong learning and enjoy working with others to bring ideas to life.
-            Whether I’m building, or exploring the latest trends in Tech, I’m always eager to make a positive impact.
-            <br />
-            Let’s connect and create something amazing together!
-          </span>
-          <div className="resume flex">
-            <button type="button" className="btn cursor-pointer">Resume</button>
-          </div>
-          <div className="links pl-[50px] w-[10vw] flex flex-row justify-center items-center gap-6">
-            <a
-              href="#linkedin"
-              onMouseEnter={() => setLinkedinHover(true)}
-              onMouseLeave={() => setLinkedinHover(false)}
-              className="relative flex flex-col items-center"
-            >
-              <IoLogoLinkedin className="size" />
-              <div className="absolute top-[110%]">
-                <BlurText
-                  text="LinkedIn"
-                  delay={100}
-                  trigger={linkedinHover}
-                  className="text-sm"
-                />
-              </div>
-            </a>
-            <a
-              href="#github"
-              onMouseEnter={() => setGithubHover(true)}
-              onMouseLeave={() => setGithubHover(false)}
-              className="relative flex flex-col items-center"
-            >
-              <IoLogoGithub className="size" />
-              <div className="absolute top-[110%]">
-                <BlurText
-                  text="GitHub"
-                  delay={100}
-                  trigger={githubHover}
-                  className="text-sm"
-                />
-              </div>
-            </a>
-            <a
-              href="mailto:your-email@example.com"
-              onMouseEnter={() => setGmailHover(true)}
-              onMouseLeave={() => setGmailHover(false)}
-              className="relative flex flex-col items-center"
-            >
-              <BiLogoGmail className="size" />
-              <div className="absolute top-[110%]">
-                <BlurText
-                  text="Email"
-                  delay={100}
-                  trigger={gmailHover}
-                  className="text-sm"
-                />
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <Space />
-      <Divider />
-      <div id="skills-section"> {/* Added a wrapper div for clarity, or add the ID to TechStack's internal div */}
-        <TechStack />
-      </div>
-      <Space />
-      <Space />
-      <Divider />
-      <div id="projects-section">
-        <Projects />
-      </div>
-      <Space />
-      <Space />
-
-      <div id="contact-section">
-        <Contact />
-      </div>
-
-
-    </>
-  );
 }
 
 export default App;
