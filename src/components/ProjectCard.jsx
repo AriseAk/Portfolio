@@ -24,7 +24,7 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
       className={`
         max-w-sm w-full mx-auto
         rounded-2xl overflow-hidden
-        bg-[#ffffe358]
+        bg-[#c0c0a6]
         shadow-[0_4px_25px_rgba(255,255,227,0.3)]
         transition-all duration-700 ease-out transform
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
@@ -37,7 +37,7 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
 <img 
             src={imageSrc} 
             alt={`Screenshot of the ${title} project`} 
-            className="  w-full h-full text-[#ffffe3] bg-transparent object-cover"
+            className="  w-full h-full text-[#10100e] bg-transparent object-cover"
         />
           {/* <path
             strokeLinecap="round"
@@ -52,12 +52,12 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
       <div className="p-6 flex flex-col justify-between flex-grow bg-transparent">
         <div className="space-y-5 bg-transparent">
           {/* Title */}
-          <h2 className="text-2xl font-bold text-[#ffffe3] bg-transparent card-component-button">
+          <h2 className="text-2xl font-bold text-[#10100e] bg-transparent card-component-button">
             {title}
           </h2>
 
           {/* Description */}
-          <p className="text-base text-[#ffffe3] bg-transparent leading-relaxed card-component-button3">
+          <p className="text-base text-[#10100e] bg-transparent leading-relaxed card-component-button3">
             {description}
           </p>
 

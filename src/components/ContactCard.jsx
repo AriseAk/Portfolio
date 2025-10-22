@@ -11,7 +11,7 @@ const ContactCard = () => {
     'bg-[#10100e] text-[#ffffe3] p-4 rounded-lg shadow-md hover:scale-[1.03] transition h-24 border border-[#ffffe3]';
 
   return (
-    <div className="w-[60vw] h-[60vh] rounded-[15px] relative mx-auto bg-[#ffffe3]">
+    <div className="w-[50vw] h-[55vh] rounded-[15px] relative mx-auto bg-[#c0c0a6]">
       {/* Title */}
       <div className="upper flex justify-center text-[40px] card-component-button bg-transparent text-[#1d1d1a]">Let's Connect</div>
 
