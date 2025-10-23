@@ -10,17 +10,17 @@ const Navbar = () => {
             <div className="">
                 <Handwriting /> 
             </div>
-            <ul className="gap-2" >
+            {/* <ul className="gap-2 " >
                 <li className=" cursor-pointer">
-                    <a href="#projects-section">Projects</a>
+                    <a href="#projects-section card-component-button3">Projects</a>
                 </li>
-                <li className=" cursor-pointer">
+                <li className=" cursor-pointer card-component-button3">
                     <a href="#skills-section">Skills</a>
                 </li>
-                <li className=" cursor-pointer">
+                <li className=" cursor-pointer card-component-button3">
                     <a href="#contact-section">Contact</a>
                 </li>
-            </ul>
+            </ul> */}
         </nav>
     );
 }

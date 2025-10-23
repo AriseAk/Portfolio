@@ -46,9 +46,8 @@ html, body {
 
 *{
     padding: 3px 4px;
-    background-color: #10100e;
-  font-family: 'Anton', sans-serif;
 
+  font-family: 'Anton', sans-serif;
 
 
 }
@@ -279,33 +278,86 @@ button:hover:after {
   color: #ffffe3!important; 
 }
 
-#contact-section {
-  /* Ensure the section takes up sufficient height to show the gradient */
-  min-height: 100vh;
-  min-width: 100vw; /* Make sure it's at least full viewport height */
-  display: flex; /* Or whatever display properties you need for content alignment */
+#skills-section{
+   min-height: 100%;
+  min-width: 100%;
+  display: flex; 
   flex-direction: column;
-  align-items: center; /* Adjust as needed for your content */
-  justify-content: center; /* Adjust as needed for your content */
-
-  /* Apply the gradient: dark at top, light at bottom */
+  align-items: center; 
+  justify-content: center;
   background: linear-gradient(to bottom, 
                               #10100e,
-                              
-                              #21211d, /* Darker shade at the top */
-                              #353530); /* Lighter shade at the bottom */
-  
-  /* Optional: Adjust color stops if you want the transition to happen faster/slower */
-  /* background: linear-gradient(to bottom, 
-                              #2c3e50 0%,  
-                              #ecf0f1 100%); */
+                              #11110f ,
+                              #1c1c19, 
+                              #21211d); 
+
 }
+#after-skills{
+    min-height: 50vh;
+  min-width: 100vw;
+  display: flex; 
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+
+  background: linear-gradient(to bottom, 
+                              #21211d,
+
+                              #34342f); 
+
+}
+#projects-section{
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex; 
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+
+  background: linear-gradient(to bottom, 
+                              #34342f,
+
+                              #45453f, 
+                              #616158, 
+                              #75756b); 
+
+
+}
+
+#after-projects{
+    min-height: 20vh;
+  min-width: 100vw;
+  display: flex; 
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+
+  background: linear-gradient(to bottom, 
+                              #75756b,
+                              #7f7f74,
+
+                              #828277, 
+                              #8a8a7d); 
+}
+#contact-section {
+  min-height: 100vh;
+  min-width: 100vw; 
+  display: flex; 
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  background: linear-gradient(to bottom, 
+                              #8a8a7d,
+                              #abab9b,
+                              #c9c9b7
+                              ); 
+
+}
+
 
 /* You might also need to ensure that the immediate children of the body/html 
    don't have conflicting background colors that hide this gradient. */
-body {
-    background-color: transparent; /* Or remove any default background if it conflicts */
-}
+
 .light-rays-container {
   width: 100%;
   height: 100%;
@@ -315,6 +367,17 @@ body {
   overflow: hidden;
 }
 
+.darkveil-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.prismatic-burst-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
 
 .card-component-button{

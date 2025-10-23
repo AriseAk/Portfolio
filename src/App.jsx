@@ -13,27 +13,30 @@ import ScrollReveal from "./components/ScrollReveal";
 import ScrollFloat from "./components/ScrollFloat";
 import Divider from "./components/Divider";
 import Textype from "./components/Textype";
-import Loader from "./components/Loader";
+import LoadingScreen from './components/LoadingScreen';
 import TechStack from "./components/TechStack";
 import ProjectsSection from './components/ProjectsSection';
+
 import StickyDock from "./components/StickyDock";
 import { FaCode } from "react-icons/fa";
 import { GoHomeFill } from "react-icons/go";
 import { BsEnvelopeFill } from "react-icons/bs";
 import ContactCard from "./components/ContactCard";
+import DarkVeil from './components/DarkVeil';
 import { PiCardsThin } from "react-icons/pi";
 import gsap from "gsap";
-import { PiCardsFill } from "react-icons/pi";
+
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { PiCardsFill } from "react-icons/pi";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const items = [
-      { icon: <GoHomeFill size={24} />, label: "Home", href: "#home-section" },
-      { icon: <FaCode size={24} />, label: "Skills", href: "#skills-section" },
-      { icon: <PiCardsFill size={24}/>, label: "Projects", href: "#projects-section" },
-      { icon: <BsEnvelopeFill size={20} />, label: "Contact", href: "#contact-section" },
+      { icon: <GoHomeFill size={28} color="#000000" />, label: "Home", href: "#home-section" },
+      { icon: <FaCode size={28} color="#000000" />, label: "Skills", href: "#skills-section" },
+      { icon: <PiCardsFill size={28} color="#000000"/>, label: "Projects", href: "#projects-section" },
+      { icon: <BsEnvelopeFill size={28} color="#000000" />, label: "Contact", href: "#contact-section" },
   ];
 
   const [loading, setLoading] = useState(true);
@@ -69,8 +72,8 @@ function App() {
 
   if (loading) {
       return (
-          <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
-              <Loader />
+          <div className="fixed inset-0 flex items-center justify-center ">
+              <LoadingScreen/>
           </div>
       );
   }
@@ -135,7 +138,7 @@ function App() {
                   className="second w-[40vw] h-full flex justify-center gap-3 flex-col"
                   ref={secondRef}
               >
-                  <span>
+                  <span className="card-component-button1">
                       Hello! I’m Akshay, a passionate and driven Developer with a love for creating innovative solutions.
                       With 1 year of experience in software, I thrive on tackling new challenges and continuously expanding my skills.
                       <br />
@@ -204,20 +207,24 @@ function App() {
           <Divider />
           
           <div id="skills-section">
+
               <TechStack />
           </div>
-
-          <Space />
-          <Divider />
+<div id="after-skills"><Space /></div>
+          
+          {/* <Divider /> */}
           
           <div id="projects-section">
               <ProjectsSection/>
           </div>
-
+          <div id="after-projects">
           <Space />
-          
+          </div>
+
+
           <div id="contact-section">
               <ContactCard/>
+
           </div>
         </div>
       </>

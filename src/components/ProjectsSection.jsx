@@ -87,7 +87,7 @@ const ProjectsSection = () => {
         titleRef.current,
         { x: 0, opacity: 0, filter: 'blur(8px)' },
         {
-          x: '60vw',
+          x: '55vw',
           opacity: 1,
           filter: 'blur(0px)',
           duration: 3,
@@ -109,10 +109,10 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="pt-16 pb-16 px-4 sm:px-8 bg-gray-50 dark:bg-gray-950">
+    <section ref={containerRef} className="pt-16 pb-16 px-4 sm:px-8 bg-transparent">
       <div className="tech-stack__container">
         <div className="tech-stack__title" ref={titleRef}>
-          <h1 className="tech-stack__title-text">Projects</h1>
+          <h1 className="tech-stack__title-text ">Projects</h1>
         </div>
       </div>
 

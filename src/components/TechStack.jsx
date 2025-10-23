@@ -93,7 +93,7 @@ const TechStack = () => {
 
 
   return (
-    <section ref={containerRef} className="tech-stack">
+    <section ref={containerRef} className="tech-stack bg-transparent w-[90vw] h-[90vh]">
       <div className="tech-stack__container">
         <div className="tech-stack__title" ref={titleRef}>
           <h1 className="tech-stack__title-text">Tech Stack</h1>

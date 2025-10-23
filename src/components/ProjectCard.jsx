@@ -24,11 +24,11 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
       className={`
         max-w-sm w-full mx-auto
         rounded-2xl overflow-hidden
-        bg-[#c0c0a6]
-        shadow-[0_4px_25px_rgba(255,255,227,0.3)]
+        bg-[#2e2e26]
+        
         transition-all duration-700 ease-out transform
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
-        hover:shadow-[0_10px_30px_rgba(255,255,227,0.5)] hover:scale-[1.02]
+        hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:scale-[1.02]
         flex flex-col
       `}
     >
@@ -52,12 +52,12 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
       <div className="p-6 flex flex-col justify-between flex-grow bg-transparent">
         <div className="space-y-5 bg-transparent">
           {/* Title */}
-          <h2 className="text-2xl font-bold text-[#10100e] bg-transparent card-component-button">
+          <h2 className="text-2xl font-bold text-[#ffffe3] bg-transparent card-component-button">
             {title}
           </h2>
 
           {/* Description */}
-          <p className="text-base text-[#10100e] bg-transparent leading-relaxed card-component-button3">
+          <p className="text-base text-[#ffffe3] bg-transparent leading-relaxed card-component-button3">
             {description}
           </p>
 
