@@ -16,7 +16,7 @@ import Textype from "./components/Textype";
 import LoadingScreen from './components/LoadingScreen';
 import TechStack from "./components/TechStack";
 import ProjectsSection from './components/ProjectsSection';
-
+import placeholder from "./assets/placeholder.png";
 import StickyDock from "./components/StickyDock";
 import { FaCode } from "react-icons/fa";
 import { GoHomeFill } from "react-icons/go";
@@ -132,7 +132,7 @@ function App() {
                   className="first w-[20vw] h-full flex justify-center items-center rounded-xl"
                   ref={firstRef}
               >
-                  <img src={armas} alt="Profile" className="first w-full h-full object-cover " />
+                  <img src={placeholder} alt="Profile" className="first w-full h-full object-cover " />
               </div>
               <div
                   className="second w-[40vw] h-full flex justify-center gap-3 flex-col"
