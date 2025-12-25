@@ -43,7 +43,6 @@ function App() {
   const [linkedinHover, setLinkedinHover] = useState(false);
   const [githubHover, setGithubHover] = useState(false);
   const [gmailHover, setGmailHover] = useState(false);
-
   const firstRef = useRef(null);
   const secondRef = useRef(null);
 
@@ -112,7 +111,13 @@ useEffect(() => {
 
     return () => ctx.revert();
   }
+
+  
 }, [loading]);
+
+
+
+
   if (loading) {
       return (
           <div className="fixed inset-0 flex items-center justify-center ">
@@ -124,7 +129,7 @@ useEffect(() => {
 
 
   return (
-    <div className="main-wrapper">
+    <div className="main-wrapper margin -water">
 
       <>
         {/* LightRays background */}

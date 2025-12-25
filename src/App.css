@@ -424,13 +424,19 @@ body {
   content: "";
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle, transparent 0%, rgba(0,0,0,0.6) 100%);
+  /* CHANGE: Start transparent later (50%) and end darker (rgba 0.9) sooner (80%) */
+  background: radial-gradient(
+    circle, 
+    transparent 20%, 
+    rgba(0, 0, 0, 0.9) 140%
+  );
   pointer-events: none;
-  /* Increase z-index to stay above all section content */
   z-index: 99; 
   mix-blend-mode: multiply;
-  opacity: 0.8;
+  opacity: 1; /* Increase opacity to max */
+  
 }
+
 #skills-section, 
 #projects-section, 
 #contact-section,
