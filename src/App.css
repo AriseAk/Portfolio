@@ -278,7 +278,7 @@ button:hover:after {
   color: #ffffe3!important; 
 }
 
-#skills-section{
+/* #skills-section{
    min-height: 100%;
   min-width: 100%;
   display: flex; 
@@ -354,7 +354,7 @@ button:hover:after {
                               #c9c9b7
                               ); 
 
-}
+} */
 
 
 /* You might also need to ensure that the immediate children of the body/html 
@@ -396,6 +396,68 @@ font-size: 15px;
 .card-component-button3{
 font-family: "Poppins", sans-serif;
 }
+
+
+/* 1. Define the dynamic variables */
+:root {
+  --bg-color: #10100e;   
+  --text-primary: #ffffe3; 
+  --text-stroke: rgba(255, 255, 227, 0.35);
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #10100e; /* Fallback */
+}
+
+/* 2. Apply them to the main container */
+.main-wrapper {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  /* Remove the transition here so GSAP can handle the smoothness via 'scrub' */
+  transition: none; 
+}
+.main-wrapper::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, transparent 0%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none;
+  /* Increase z-index to stay above all section content */
+  z-index: 99; 
+  mix-blend-mode: multiply;
+  opacity: 0.8;
+}
+#skills-section, 
+#projects-section, 
+#contact-section,
+#after-skills,
+#after-projects {
+  background: transparent !important;
+  position: relative;
+  /* Keep content below the vignette z-index (99) but above background */
+  z-index: 10; 
+}
+
+/* 3. Update existing classes to use variables */
+.outline {
+  -webkit-text-stroke: 1px var(--text-stroke); 
+}
+
+.card-component-button1, .links, .second {
+  color: var(--text-primary);
+  opacity: 0.8; /* Adjust for readability */
+}
+
+/* Ensure sections are transparent so the wrapper background shows through */
+#skills-section, #projects-section, #contact-section, #after-skills, #after-projects {
+  background: transparent !important;
+}
+
+
 @media (min-width: 768px) {
   .scroller {
     font-size: 5rem;

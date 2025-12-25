@@ -69,7 +69,50 @@ function App() {
           );
       }
   }, [loading]);
+useEffect(() => {
+  if (!loading) {
+    const ctx = gsap.context(() => {
+      // Create one master timeline for the whole page
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".main-wrapper",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1, // Smoothing out the transition
+        }
+      });
 
+      // Chain the colors together seamlessly
+      tl.to(".main-wrapper", {
+        "--bg-color": "#161614", // End of Home
+        "--text-stroke": "rgba(255, 255, 227, 0.3)",
+        duration: 1,
+        ease: "none"
+      })
+      .to(".main-wrapper", {
+        "--bg-color": "#42423d", // End of Skills
+        "--text-primary": "#f0f0d8",
+        duration: 1,
+        ease: "none"
+      })
+      .to(".main-wrapper", {
+        "--bg-color": "#75756b", // End of Projects
+        "--text-primary": "#2a2a2a",
+        "--text-stroke": "rgba(26, 26, 26, 0.2)",
+        duration: 1,
+        ease: "none"
+      })
+      .to(".main-wrapper", {
+        "--bg-color": "#fdfcf0", // Final (Contact)
+        "--text-primary": "#1a1a1a",
+        duration: 1,
+        ease: "none"
+      });
+    });
+
+    return () => ctx.revert();
+  }
+}, [loading]);
   if (loading) {
       return (
           <div className="fixed inset-0 flex items-center justify-center ">
@@ -78,7 +121,11 @@ function App() {
       );
   }
 
+
+
   return (
+    <div className="main-wrapper">
+
       <>
         {/* LightRays background */}
         <LightRays
@@ -228,7 +275,9 @@ function App() {
           </div>
         </div>
       </>
+      </div>
   );
 }
+
 
 export default App;
