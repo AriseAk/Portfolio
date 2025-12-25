@@ -31,7 +31,7 @@ const ContactCard = () => {
           <BiLogoGmail className="w-[40px] h-[40px] flex-shrink-0 bg-transparent text-[#1d1d1a]" />
           <div className="flex flex-col justify-center bg-transparent text-[#1d1d1a] ">
             <span className="font-bold cursor-pointer text-base bg-transparent text-[#1d1d1a] card-component-button">Email</span>
-            <span className="text-xs bg-transparent text-[#1d1d1a] card-component-button1">akshaybhat093@gmail.com</span>
+            <span className="text-xs bg-transparent text-[#1d1d1a] card-component-button1">akshay.code.bhat@gmail.com</span>
           </div>
         </a>
 

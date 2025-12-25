@@ -1,28 +1,53 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import '../TechStack.css';
-import { RiTailwindCssFill } from "react-icons/ri";
-import { FaGithub } from "react-icons/fa";
-import { SiExpress } from "react-icons/si";
-import ScrollReveal from './ScrollReveal';
-import { RiVercelFill } from "react-icons/ri";
-import { SiNetlify } from "react-icons/si";
-import { SiRender } from "react-icons/si";
-import { SiFlask } from "react-icons/si";
-import { FaPython } from "react-icons/fa";
-import cpp from "../assets/cpp.png"
-import java from "../assets/java.png"
+import { RiTailwindCssFill, RiVercelFill } from "react-icons/ri";
+import { FaGithub, FaPython } from "react-icons/fa";
+import { SiExpress, SiNetlify, SiRender, SiFlask, SiMysql, SiMongodb } from "react-icons/si";
+import cpp from "../assets/cpp.png";
+import java from "../assets/java.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// 1. Uniform Box Component (Fixed Size) with class for animation
+const SkillBox = ({ name, icon }) => (
+  <div className="skill-box opacity-0 group flex flex-col items-center justify-center gap-2 w-20 h-20 sm:w-24 sm:h-24 p-2 rounded-lg border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-default">
+    <div className="text-2xl sm:text-3xl text-white/80 group-hover:text-[#ffffe3] transition-colors duration-300">
+      {typeof icon === 'string' ? (
+        <img src={icon} alt={name} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
+      ) : (
+        icon
+      )}
+    </div>
+    <span className="text-[10px] sm:text-xs font-mono text-center text-white/60 group-hover:text-white tracking-wide">
+      {name}
+    </span>
+  </div>
+);
+
+// 2. Category Group Component
+const TechCategory = ({ title, children }) => (
+  <div className="flex flex-col gap-4 mb-8">
+    <div className="flex items-center gap-3">
+       <div className="h-[1px] w-8 bg-[#ffffe3]/30"></div>
+       <h3 className="text-sm font-bold tracking-[0.2em] text-[#ffffe3]/80">{title}</h3>
+       <div className="h-[1px] flex-grow bg-[#ffffe3]/10"></div>
+    </div>
+    <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
+      {children}
+    </div>
+  </div>
+);
+
 const TechStack = () => {
   const containerRef = useRef(null);
-  const titleRef = useRef(null); // New
+  const titleRef = useRef(null);
+  const boxRef = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Title animation: left to right with blur
+      
+      // 1. ORIGINAL HEADER ANIMATION (Restored)
       gsap.fromTo(titleRef.current,
         {
           x: '80vw',
@@ -45,187 +70,116 @@ const TechStack = () => {
         }
       );
 
-      // Animate categories
-      gsap.utils.toArray('.tech-category').forEach((category) => {
-        gsap.fromTo(category,
-          { opacity: 0, y: 60 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: category,
-              start: "top 85%",
-              end: "bottom 20%",
-              toggleActions: "play none none reverse",
-              refreshPriority: -1
-            }
+      // 2. MAIN BOX ANIMATION (Container)
+      gsap.fromTo(boxRef.current,
+        { 
+          x: -100, // Slides in slightly from left
+          y: 50, 
+          opacity: 0 
+        },
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: boxRef.current,
+            start: "top 80%",
+            end: "top 50%",
+            scrub: 1,
           }
-        );
-      });
+        }
+      );
 
-      // Animate tech items
-      gsap.utils.toArray('.tech-item').forEach((item, index) => {
-        gsap.fromTo(item,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            ease: "power3.out",
-            delay: (index % 6) * 0.1,
-            scrollTrigger: {
-              trigger: item,
-              start: "top 90%",
-              toggleActions: "play none none reset",
-              refreshPriority: -1
-            }
+      // 3. INDIVIDUAL SKILLS STAGGER (Inside the box)
+      gsap.fromTo(".skill-box",
+        { 
+          y: 20, 
+          opacity: 0,
+          scale: 0.8
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.5,
+          stagger: 0.05, // Stagger effect for ripple look
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: boxRef.current, // Triggers when the box starts appearing
+            start: "top 75%",
+            toggleActions: "play none none reverse"
           }
-        );
-      });
+        }
+      );
 
-      ScrollTrigger.refresh();
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
-
   return (
-    <section ref={containerRef} className="tech-stack bg-transparent w-[90vw] h-[90vh]">
+    <section ref={containerRef} className="relative w-full min-h-screen flex flex-col items-start justify-center py-20 px-4 md:px-20">
+      
+      {/* 1. ORIGINAL ANIMATED HEADER (Outside the box) */}
       <div className="tech-stack__container">
         <div className="tech-stack__title" ref={titleRef}>
           <h1 className="tech-stack__title-text">Tech Stack</h1>
         </div>
 
-        {/* FRONTEND */}
-        <div className="tech-category">
-          <div className="tech-category__label">
-            <div className="tech-category__label-inner">
-              <div className="tech-category__label-dot"></div>
-              FRONTEND
+      {/* 2. THE MAIN BOX CONTAINER (Left Aligned) */}
+      <div 
+        ref={boxRef}
+        className="relative w-full max-w-6xl p-6 md:p-10 rounded-2xl border border-white/10 bg-[#10100e]/60 backdrop-blur-md shadow-2xl mr-auto"
+      >
+        {/* --- CONTENT AREA --- */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            
+            {/* Left Column */}
+            <div className="flex flex-col">
+                <TechCategory title="FRONTEND">
+                    <SkillBox name="JS" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
+                    <SkillBox name="React" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
+                    <SkillBox name="HTML5" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
+                    <SkillBox name="CSS3" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
+                    <SkillBox name="Tailwind" icon={<RiTailwindCssFill className="text-[#38bdf8]" />} />
+                    <SkillBox name="Bootstrap" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" />
+                </TechCategory>
+
+                 <TechCategory title="LANGUAGES">
+                    <SkillBox name="C++" icon={cpp} />
+                    <SkillBox name="Python" icon={<FaPython className="text-[#3776ab]" />} />
+                    <SkillBox name="Java" icon={java} />
+                </TechCategory>
             </div>
-          </div>
-          <div className="tech-category__items">
-            <div className="tech-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" className="tech-item__icon" alt="JavaScript" />
-              <span className="tech-item__name">JavaScript</span>
+
+            {/* Right Column */}
+            <div className="flex flex-col">
+                <TechCategory title="BACKEND">
+                    <SkillBox name="Node.js" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" />
+                    <SkillBox name="Express" icon={<SiExpress className="text-white" />} />
+                    <SkillBox name="Next.js" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" />
+                    <SkillBox name="Flask" icon={<SiFlask className="text-white" />} />
+                </TechCategory>
+
+                {/* DATABASE MANAGEMENT */}
+                <TechCategory title="DATABASE MANAGEMENT">
+                    <SkillBox name="MongoDB" icon={<SiMongodb className="text-[#47A248]" />} />
+                    <SkillBox name="MySQL" icon={<SiMysql className="text-[#00758F]" />} />
+                </TechCategory>
+
+                <TechCategory title="TOOLS">
+                    <SkillBox name="Git" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
+                    <SkillBox name="GitHub" icon={<FaGithub className="text-white" />} />
+                    <SkillBox name="Vercel" icon={<RiVercelFill className="text-white" />} />
+                    <SkillBox name="Netlify" icon={<SiNetlify className="text-[#25c1b7]" />} />
+                    <SkillBox name="Render" icon={<SiRender className="text-white" />} />
+                </TechCategory>
             </div>
-            <div className="tech-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" className="tech-item__icon" alt="React" />
-              <span className="tech-item__name">React</span>
-            </div>
-            <div className="tech-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" className="tech-item__icon" alt="HTML5" />
-              <span className="tech-item__name">HTML5</span>
-            </div>
-            <div className="tech-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" className="tech-item__icon" alt="CSS3" />
-              <span className="tech-item__name">CSS3</span>
-            </div>
-            <div className="tech-item">
-              <RiTailwindCssFill className='w-[30px] h-[30px]' />
-              <span className="tech-item__name">Tailwind CSS</span>
-            </div>
-            <div className="tech-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" className="tech-item__icon" alt="Bootstrap" />
-              <span className="tech-item__name">Bootstrap</span>
-            </div>
-          </div>
         </div>
 
-        {/* BACKEND */}
-        <div className="tech-category">
-          <div className="tech-category__label">
-            <div className="tech-category__label-inner">
-              <div className="tech-category__label-dot"></div>
-              BACKEND
-            </div>
-          </div>
-          <div className="tech-category__items">
-            <div className="tech-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" className="tech-item__icon" alt="Node.js" />
-              <span className="tech-item__name">Node.js</span>
-            </div>
-            <div className="tech-item">
-              <SiExpress className='w-[30px] h-[30px]' />
-              <span className="tech-item__name">Express</span>
-            </div>
-            <div className="tech-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" className="tech-item__icon" alt="Next.js" />
-              <span className="tech-item__name">Next.js</span>
-            </div>
-            <div className="tech-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" className="tech-item__icon" alt="MongoDB" />
-              <span className="tech-item__name">MongoDB</span>
-            </div>
-            <div className="tech-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" className="tech-item__icon" alt="Mongoose" />
-              <span className="tech-item__name">Mongoose</span>
-            </div>
-            <div className="tech-item">
-              <SiFlask className='w-[30px] h-[30px]' />
-              <span className="tech-item__name">Flask</span>
-            </div>
-          </div>
-        </div>
-
-        {/* TOOLS */}
-        <div className="tech-category">
-          <div className="tech-category__label">
-            <div className="tech-category__label-inner">
-              <div className="tech-category__label-dot"></div>
-              TOOLS
-            </div>
-          </div>
-          <div className="tech-category__items">
-            <div className="tech-item">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" className="tech-item__icon" alt="Git" />
-              <span className="tech-item__name">Git</span>
-            </div>
-            <div className="tech-item">
-              <FaGithub className='w-[30px] h-[30px]' />
-              <span className="tech-item__name">GitHub</span>
-            </div>
-            <div className="tech-item">
-              <RiVercelFill className='w-[30px] h-[30px]' />
-              <span className="tech-item__name">Vercel</span>
-            </div>
-            <div className="tech-item">
-              <SiNetlify className='w-[30px] h-[30px]' />
-              <span className="tech-item__name">Netlify</span>
-            </div>
-            <div className="tech-item">
-              <SiRender className='w-[30px] h-[30px]' />
-              <span className="tech-item__name">Render</span>
-            </div>
-          </div>
-        </div>
-
-        {/* LANGUAGES */}
-        <div className="tech-category">
-          <div className="tech-category__label">
-            <div className="tech-category__label-inner">
-              <div className="tech-category__label-dot"></div>
-              LANGUAGES
-            </div>
-          </div>
-          <div className="tech-category__items">
-            <div className="tech-item">
-              <img src={cpp} className="tech-item__icon" alt="Git" />
-              <span className="tech-item__name">C++</span>
-            </div>
-            <div className="tech-item">
-              <FaPython className='w-[30px] h-[30px]' />
-              <span className="tech-item__name">Python</span>
-            </div>
-            <div className="tech-item">
-              <img src={java} alt="" className='w-[30px] h-[30px]'/>
-              <span className="tech-item__name">Java</span>
-            </div>
-          </div>
-        </div>
+      </div>
       </div>
     </section>
   );

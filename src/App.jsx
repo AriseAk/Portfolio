@@ -25,6 +25,7 @@ import ContactCard from "./components/ContactCard";
 import DarkVeil from './components/DarkVeil';
 import { PiCardsThin } from "react-icons/pi";
 import gsap from "gsap";
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PiCardsFill } from "react-icons/pi";
@@ -83,26 +84,26 @@ useEffect(() => {
 
       // Chain the colors together seamlessly
       tl.to(".main-wrapper", {
-        "--bg-color": "#161614", // End of Home
+        "--bg-color": "#10100e", // End of Home
         "--text-stroke": "rgba(255, 255, 227, 0.3)",
         duration: 1,
         ease: "none"
       })
       .to(".main-wrapper", {
-        "--bg-color": "#42423d", // End of Skills
+        "--bg-color": "#393932", // End of Skills
         "--text-primary": "#f0f0d8",
         duration: 1,
         ease: "none"
       })
       .to(".main-wrapper", {
-        "--bg-color": "#75756b", // End of Projects
+        "--bg-color": "#b5b5a2", // End of Projects
         "--text-primary": "#2a2a2a",
         "--text-stroke": "rgba(26, 26, 26, 0.2)",
         duration: 1,
         ease: "none"
       })
       .to(".main-wrapper", {
-        "--bg-color": "#fdfcf0", // Final (Contact)
+        "--bg-color": "#ffffe3", // Final (Contact)
         "--text-primary": "#1a1a1a",
         duration: 1,
         ease: "none"

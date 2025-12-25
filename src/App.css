@@ -463,7 +463,12 @@ body {
   background: transparent !important;
 }
 
-
+.idk{
+  color:#10100e;
+  color:#36362f;
+  color:#b5b5a2;
+  color:#ffffe3;
+}
 @media (min-width: 768px) {
   .scroller {
     font-size: 5rem;
