@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import '../App.css';
 
 const LoadingScreen = ({ onComplete }) => {
   const [text, setText] = useState("INITIALIZING...");
@@ -81,22 +82,22 @@ const LoadingScreen = ({ onComplete }) => {
       ref={containerRef} 
       className="fixed inset-0 z-[9999] bg-[#10100e] flex flex-col items-center justify-center overflow-hidden"
     >
-      <div ref={textRef} className="flex flex-col items-start w-[300px]">
+      <div ref={textRef} className="flex flex-col items-start w-[300px] loaderstyle">
         
         {/* PERCENTAGE TEXT - Uses Ref instead of State */}
         <div 
           ref={percentageRef}
-          className="text-[80px] md:text-[120px] font-bold text-[#ffffe3] leading-none"
-          style={{ fontFamily: "'Anton', sans-serif" }}
+          className="text-[100px] md:text-[120px]  text-[#ffffe3] leading-none"
+          style={{ fontFamily: "'Jersey 10', sans-serif" }}
         >
           0%
         </div>
 
         {/* Boot Log Text */}
-        <div className="flex justify-between w-full items-end mt-2">
+        <div className="flex justify-between w-full items-end mt-2 loaderstyle">
             <span 
-              className="text-sm text-white/50 tracking-widest"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
+              className="text-sm text-white/50 tracking-widest "
+              style={{ fontFamily: "'Jersey 10', sans-serif" }}
             >
               // {text}
             </span>

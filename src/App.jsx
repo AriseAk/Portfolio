@@ -3,6 +3,7 @@ import LightRays from './components/LightRays';
 import Navbar from './components/Navbar';
 import './App.css';
 import armas from "./assets/armas.jpg";
+import resume from "./assets/resume.pdf";
 import Space from "./components/Space";
 import DecryptedText from './components/DecryptedText';
 import BlurText from "./components/BlurText";
@@ -12,6 +13,7 @@ import Card from "./components/Card";
 import ScrollReveal from "./components/ScrollReveal";
 import ScrollFloat from "./components/ScrollFloat";
 import Divider from "./components/Divider";
+
 import Textype from "./components/Textype";
 import LoadingScreen from './components/LoadingScreen';
 import TechStack from "./components/TechStack";
@@ -192,16 +194,26 @@ useEffect(() => {
                   ref={secondRef}
               >
                   <span className="card-component-button1">
-                      Hello! I’m Akshay, a passionate and driven Developer with a love for creating innovative solutions.
-                      With 1 year of experience in software, I thrive on tackling new challenges and continuously expanding my skills.
-                      <br />
-                      I believe in the power of lifelong learning and enjoy working with others to bring ideas to life.
-                      Whether I’m building, or exploring the latest trends in Tech, I’m always eager to make a positive impact.
+                      Hello! I’m Akshay, a passionate Developer dedicated to the craft of building scalable applications. I thrive in ]
+                      dynamic environments where innovation meets logic, using my background 
+                      to turn abstract ideas into reality.
+                      <br />I believe in the power of consistent growth. I
+         am eager to bring my energy, technical perspective, and collaborative spirit to teams that are ready to make a positive impact.
                       <br />
                       Let’s connect and create something amazing together!
                   </span>
                   <div className="resume flex">
-                      <button type="button" className="btn cursor-pointer">Resume</button>
+                      
+                      <a 
+        href={resume} 
+        download="AkshayBhat_Resume.pdf" // This forces the download and sets the filename
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        <button className="inline-flex items-center justify-center no-underline btn cursor-pointer">
+          Resume
+        </button>
+      </a>
                   </div>
                   <div className="links pl-[50px] w-[10vw] flex flex-row justify-center items-center gap-6">
                       <a

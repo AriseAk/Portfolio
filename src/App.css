@@ -21,6 +21,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+
 html {
     scroll-behavior: smooth;
 }
@@ -51,7 +53,9 @@ html, body {
 
 
 }
-
+.loaderstyle{
+  font-family: "Jersey 10", sans-serif;
+}
 .outline {
   font-family: 'Anton', sans-serif;
   font-weight: bold;
