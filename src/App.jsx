@@ -217,7 +217,7 @@ useEffect(() => {
                   </div>
                   <div className="links pl-[50px] w-[10vw] flex flex-row justify-center items-center gap-6">
                       <a
-                          href="#linkedin"
+                          href="https://www.linkedin.com/in/akshay-bhat-a2900a333/"
                           onMouseEnter={() => setLinkedinHover(true)}
                           onMouseLeave={() => setLinkedinHover(false)}
                           className="relative flex flex-col items-center"
@@ -233,7 +233,7 @@ useEffect(() => {
                           </div>
                       </a>
                       <a
-                          href="#github"
+                          href="https://github.com/AriseAk"
                           onMouseEnter={() => setGithubHover(true)}
                           onMouseLeave={() => setGithubHover(false)}
                           className="relative flex flex-col items-center"
@@ -249,7 +249,7 @@ useEffect(() => {
                           </div>
                       </a>
                       <a
-                          href="mailto:your-email@example.com"
+                          href="mailto:akshay.code.bhat@gmail.com"
                           onMouseEnter={() => setGmailHover(true)}
                           onMouseLeave={() => setGmailHover(false)}
                           className="relative flex flex-col items-center"
@@ -277,8 +277,8 @@ useEffect(() => {
           </div>
 <div id="after-skills"><Space /></div>
           
-          {/* <Divider /> */}
-          
+          <Divider />
+
           <div id="projects-section">
               <ProjectsSection/>
           </div>
@@ -286,7 +286,8 @@ useEffect(() => {
           <Space />
           </div>
 
-
+          <Divider />
+                    <Space />
           <div id="contact-section">
               <ContactCard/>
 

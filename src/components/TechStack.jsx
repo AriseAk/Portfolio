@@ -4,36 +4,40 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { RiTailwindCssFill, RiVercelFill } from "react-icons/ri";
 import { FaGithub, FaPython } from "react-icons/fa";
 import { SiExpress, SiNetlify, SiRender, SiFlask, SiMysql, SiMongodb } from "react-icons/si";
-import cpp from "../assets/cpp.png";
+// Assuming you have these assets, otherwise replace with placeholder or remove
+import cpp from "../assets/cpp.png"; 
 import java from "../assets/java.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// 1. Uniform Box Component (Fixed Size) with class for animation
+// 1. Skill Box with Enhanced Hover Effects & Shadows
 const SkillBox = ({ name, icon }) => (
-  <div className="skill-box opacity-0 group flex flex-col items-center justify-center gap-2 w-20 h-20 sm:w-24 sm:h-24 p-2 rounded-lg border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 cursor-default">
-    <div className="text-2xl sm:text-3xl text-white/80 group-hover:text-[#ffffe3] transition-colors duration-300">
+  <div className="skill-box opacity-0 group flex items-center gap-3 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/50 hover:scale-105 hover:-translate-y-1 hover:shadow-[0_5px_20px_rgba(255,255,255,0.15)] transition-all duration-300 cursor-default">
+    {/* Icon Container */}
+    <div className="text-lg sm:text-xl text-white/80 group-hover:text-[#ffffe3] transition-colors duration-300 flex-shrink-0">
       {typeof icon === 'string' ? (
-        <img src={icon} alt={name} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
+        <img src={icon} alt={name} className="w-5 h-5 sm:w-6 sm:h-6 object-contain" />
       ) : (
         icon
       )}
     </div>
-    <span className="text-[10px] sm:text-xs font-mono text-center text-white/60 group-hover:text-white tracking-wide">
+    {/* Text Container */}
+    <span className="text-xs sm:text-sm font-medium text-white/70 group-hover:text-white tracking-wide whitespace-nowrap">
       {name}
     </span>
   </div>
 );
 
-// 2. Category Group Component
+// 2. Category Group - Forced Left Alignment
 const TechCategory = ({ title, children }) => (
-  <div className="flex flex-col gap-4 mb-8">
+  <div className="flex flex-col gap-4 mb-6">
     <div className="flex items-center gap-3">
-       <div className="h-[1px] w-8 bg-[#ffffe3]/30"></div>
-       <h3 className="text-sm font-bold tracking-[0.2em] text-[#ffffe3]/80">{title}</h3>
-       <div className="h-[1px] flex-grow bg-[#ffffe3]/10"></div>
+        <div className="h-[1px] w-6 bg-[#ffffe3]/30"></div>
+        <h3 className="text-xs font-bold tracking-[0.2em] text-[#ffffe3]/80">{title}</h3>
+        <div className="h-[1px] flex-grow bg-[#ffffe3]/10"></div>
     </div>
-    <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
+    {/* justify-start ensures left alignment */}
+    <div className="flex flex-wrap gap-3 justify-start">
       {children}
     </div>
   </div>
@@ -47,7 +51,7 @@ const TechStack = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       
-      // 1. ORIGINAL HEADER ANIMATION (Restored)
+      // 1. Header Animation
       gsap.fromTo(titleRef.current,
         {
           x: '80vw',
@@ -55,7 +59,7 @@ const TechStack = () => {
           filter: 'blur(8px)'
         },
         {
-          x: 0,
+          x: 0, 
           opacity: 1,
           filter: 'blur(0px)',
           duration: 2.5,
@@ -70,10 +74,10 @@ const TechStack = () => {
         }
       );
 
-      // 2. MAIN BOX ANIMATION (Container)
+      // 2. Main Box Animation
       gsap.fromTo(boxRef.current,
         { 
-          x: -100, // Slides in slightly from left
+          x: -100, 
           y: 50, 
           opacity: 0 
         },
@@ -92,7 +96,7 @@ const TechStack = () => {
         }
       );
 
-      // 3. INDIVIDUAL SKILLS STAGGER (Inside the box)
+      // 3. Staggered Items
       gsap.fromTo(".skill-box",
         { 
           y: 20, 
@@ -103,11 +107,11 @@ const TechStack = () => {
           y: 0,
           opacity: 1,
           scale: 1,
-          duration: 0.5,
-          stagger: 0.05, // Stagger effect for ripple look
-          ease: "back.out(1.7)",
+          duration: 0.4,
+          stagger: 0.03, 
+          ease: "back.out(1.5)",
           scrollTrigger: {
-            trigger: boxRef.current, // Triggers when the box starts appearing
+            trigger: boxRef.current,
             start: "top 75%",
             toggleActions: "play none none reverse"
           }
@@ -120,66 +124,66 @@ const TechStack = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-full min-h-screen flex flex-col items-start justify-center py-20 px-4 md:px-20">
+    <section ref={containerRef} className="relative w-full min-h-screen flex flex-col items-start justify-center py-20 px-4 md:px-20 overflow-hidden">
       
-      {/* 1. ORIGINAL ANIMATED HEADER (Outside the box) */}
-      <div className="tech-stack__container">
-        <div className="tech-stack__title" ref={titleRef}>
-          <h1 className="tech-stack__title-text">Tech Stack</h1>
+      <div className="tech-stack__container w-full">
+        {/* Title */}
+        <div className="tech-stack__title mb-10" ref={titleRef}>
+          <h1 className="tech-stack__title-text text-5xl md:text-7xl font-bold">Tech Stack</h1>
         </div>
 
-      {/* 2. THE MAIN BOX CONTAINER (Left Aligned) */}
-      <div 
-        ref={boxRef}
-        className="relative w-full max-w-6xl p-6 md:p-10 rounded-2xl border border-white/10 bg-[#10100e]/60 backdrop-blur-md shadow-2xl mr-auto"
-      >
-        {/* --- CONTENT AREA --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            
-            {/* Left Column */}
-            <div className="flex flex-col">
-                <TechCategory title="FRONTEND">
-                    <SkillBox name="JS" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
-                    <SkillBox name="React" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
-                    <SkillBox name="HTML5" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
-                    <SkillBox name="CSS3" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
-                    <SkillBox name="Tailwind" icon={<RiTailwindCssFill className="text-[#38bdf8]" />} />
-                    <SkillBox name="Bootstrap" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" />
-                </TechCategory>
+        {/* MAIN BOX CONTAINER */}
+        <div 
+          ref={boxRef}
+          className="relative w-full max-w-5xl p-6 md:p-8 rounded-2xl border border-white/10 bg-[#10100e]/60 backdrop-blur-md shadow-2xl mr-auto"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+              
+              {/* Left Column */}
+              <div className="flex flex-col">
+                  
+                  {/* LANGUAGES SECTION */}
+                  <TechCategory title="LANGUAGES">
+                      <SkillBox name="C++" icon={cpp} />
+                      <SkillBox name="C" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" />
+                      <SkillBox name="JavaScript" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
+                      <SkillBox name="Python" icon={<FaPython className="text-[#3776ab]" />} />
+                  </TechCategory>
 
-                 <TechCategory title="LANGUAGES">
-                    <SkillBox name="C++" icon={cpp} />
-                    <SkillBox name="Python" icon={<FaPython className="text-[#3776ab]" />} />
-                    <SkillBox name="Java" icon={java} />
-                </TechCategory>
-            </div>
+                  {/* FRONTEND SECTION */}
+                  <TechCategory title="FRONTEND">
+                      <SkillBox name="React" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
+                      <SkillBox name="HTML5" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
+                      <SkillBox name="CSS3" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
+                      <SkillBox name="Tailwind" icon={<RiTailwindCssFill className="text-[#38bdf8]" />} />
+                      <SkillBox name="Bootstrap" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" />
+                  </TechCategory>
 
-            {/* Right Column */}
-            <div className="flex flex-col">
-                <TechCategory title="BACKEND">
-                    <SkillBox name="Node.js" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" />
-                    <SkillBox name="Express" icon={<SiExpress className="text-white" />} />
-                    <SkillBox name="Next.js" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" />
-                    <SkillBox name="Flask" icon={<SiFlask className="text-white" />} />
-                </TechCategory>
 
-                {/* DATABASE MANAGEMENT */}
-                <TechCategory title="DATABASE MANAGEMENT">
-                    <SkillBox name="MongoDB" icon={<SiMongodb className="text-[#47A248]" />} />
-                    <SkillBox name="MySQL" icon={<SiMysql className="text-[#00758F]" />} />
-                </TechCategory>
+                  <TechCategory title="BACKEND">
+                      <SkillBox name="Node.js" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" />
+                      <SkillBox name="Express" icon={<SiExpress className="text-white" />} />
+                      <SkillBox name="Next.js" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" />
+                      <SkillBox name="Flask" icon={<SiFlask className="text-white" />} />
+                  </TechCategory>
 
-                <TechCategory title="TOOLS">
-                    <SkillBox name="Git" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
-                    <SkillBox name="GitHub" icon={<FaGithub className="text-white" />} />
-                    <SkillBox name="Vercel" icon={<RiVercelFill className="text-white" />} />
-                    <SkillBox name="Netlify" icon={<SiNetlify className="text-[#25c1b7]" />} />
-                    <SkillBox name="Render" icon={<SiRender className="text-white" />} />
-                </TechCategory>
-            </div>
+                  <TechCategory title="DATABASE MANAGEMENT">
+                      <SkillBox name="MongoDB" icon={<SiMongodb className="text-[#47A248]" />} />
+                      <SkillBox name="MySQL" icon={<SiMysql className="text-[#00758F]" />} />
+                  </TechCategory>
+                  
+                  <TechCategory title="DEPLOYMENT & TOOLS">
+                      <SkillBox name="Git" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
+                      <SkillBox name="GitHub" icon={<FaGithub className="text-white" />} />
+                      <SkillBox name="Vercel" icon={<RiVercelFill className="text-white" />} />
+                      <SkillBox name="Netlify" icon={<SiNetlify className="text-[#25c1b7]" />} />
+                      <SkillBox name="Render" icon={<SiRender className="text-white" />} />
+                  </TechCategory>
+              </div>
+
+          </div>
+
         </div>
-
-      </div>
       </div>
     </section>
   );
