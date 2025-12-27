@@ -3,7 +3,6 @@ import LightRays from './components/LightRays';
 import Navbar from './components/Navbar';
 import './App.css';
 import armas from "./assets/armas.jpg";
-import resume from "./assets/resume.pdf";
 import Space from "./components/Space";
 import DecryptedText from './components/DecryptedText';
 import BlurText from "./components/BlurText";
@@ -213,7 +212,7 @@ useEffect(() => {
                   <div className="resume flex">
                       
                       <a 
-        href={resume} 
+        href="/resume.pdf"
         download="AkshayBhat_Resume.pdf" // This forces the download and sets the filename
         target="_blank" 
         rel="noopener noreferrer"

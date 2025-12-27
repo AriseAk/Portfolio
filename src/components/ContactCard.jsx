@@ -119,7 +119,7 @@ const ContactCard = () => {
           {/* Grid Item 4: Resume/CV */}
           <a
             className={gridItemClasses}
-            href="/src/assets/resume.pdf"
+            href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Download resume"
