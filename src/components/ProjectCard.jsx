@@ -52,7 +52,7 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
       <div className="p-6 flex flex-col justify-between flex-grow bg-transparent">
         <div className="space-y-5 bg-transparent">
           {/* Title */}
-          <h2 className="text-2xl font-bold text-[#ffffe3] bg-transparent card-component-button">
+          <h2 className="text-2xl font-semibold text-[#ffffe3] bg-transparent card-component-button3">
             {title}
           </h2>
 
@@ -84,7 +84,7 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
             href={primaryButtonUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 py-3 px-6 text-center text-lg font-bold rounded-xl
+            className="card-component-button3 flex-1 py-3 px-6 text-center text-lg font-bold rounded-xl
                        text-[#ffffe3] bg-[#10100e]
                        shadow-md transition duration-300 transform
                        hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,255,227,0.4)]
@@ -100,12 +100,12 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 py-3 px-6 text-center text-lg font-bold rounded-xl
+            className="card-component-button3 flex-1 py-3 px-6 text-center text-lg font-bold rounded-xl
                        text-[#ffffe3] bg-[#10100e]
-                       border border-[#ffffe3]
+                       
                        shadow-md transition duration-300 transform
                        hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,255,227,0.4)]
-                       focus:outline-none focus:ring-4 focus:ring-[#ffffe3] focus:ring-opacity-30
+                       focus:outline-none focus:ring-4 focus:ring-opacity-30
                        flex items-center justify-center gap-2 card-component-button1"
           >
             <FaGithub className="text-xl" />

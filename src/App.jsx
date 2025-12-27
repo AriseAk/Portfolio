@@ -13,7 +13,7 @@ import Card from "./components/Card";
 import ScrollReveal from "./components/ScrollReveal";
 import ScrollFloat from "./components/ScrollFloat";
 import Divider from "./components/Divider";
-
+import Footer from "./components/Footer";
 import Textype from "./components/Textype";
 import LoadingScreen from './components/LoadingScreen';
 import TechStack from "./components/TechStack";
@@ -31,6 +31,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PiCardsFill } from "react-icons/pi";
+import { div } from "framer-motion/client";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -132,6 +133,7 @@ useEffect(() => {
 
 
   return (
+   <div>
     <div className="main-wrapper margin -water">
 
       <>
@@ -193,8 +195,8 @@ useEffect(() => {
                   className="second w-[40vw] h-full flex justify-center gap-3 flex-col"
                   ref={secondRef}
               >
-                  <span className="card-component-button1">
-                      Hello! I’m Akshay, a passionate Developer dedicated to the craft of building scalable applications. I thrive in ]
+                  <span className="card-component-button3 text-[15px]">
+                      Hello! I’m Akshay, a passionate Developer dedicated to the craft of building scalable applications. I thrive in 
                       dynamic environments where innovation meets logic, using my background 
                       to turn abstract ideas into reality.
                       <br />I believe in the power of consistent growth. I
@@ -292,8 +294,15 @@ useEffect(() => {
               <ContactCard/>
 
           </div>
+          
+
         </div>
+        <Space/>
+
       </>
+
+      </div>
+                        <Footer/>
       </div>
   );
 }
