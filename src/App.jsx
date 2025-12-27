@@ -93,7 +93,7 @@ useEffect(() => {
         ease: "none"
       })
       .to(".main-wrapper", {
-        "--bg-color": "#393932", // End of Skills
+        "--bg-color": "#4c4c42", // End of Skills
         "--text-primary": "#f0f0d8",
         duration: 1,
         ease: "none"

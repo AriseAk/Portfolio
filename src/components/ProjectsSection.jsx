@@ -8,6 +8,7 @@ import carebridge from '../assets/carebridge.png'
 import hackarena from '../assets/hackarena.png'
 import jarvis from '../assets/jarvis.png'
 import spotify from '../assets/spotify.png'
+import mood from '../assets/mood.png'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +24,7 @@ const ProjectsSection = () => {
         'A responsive, component-driven portfolio constructed using the React library and Tailwind CSS utilities to demonstrate the software projects.',
       techStack: ['React', 'Tailwind CSS','Vite','Vercel'],
       githubUrl: 'https://github.com/AriseAk/Portfolio',
-      demoUrl: 'https://demo.atschecker.com',
+      demoUrl: 'https://akshaybhat.vercel.app/',
       isDeployed: true,
       imageSrc: portfolio,
     },
@@ -31,14 +32,24 @@ const ProjectsSection = () => {
       id: 2,
       title: 'FabrAIc',
       description:
-        'udgcusgdfishdfihsidfgisgisd  dia diagid aisd ai sdia sdiasdia sdi aid aisd ai dgia dia dias dia di i',
-      techStack: ['React', 'Tailwind CSS', 'Markdown', 'Netlify', 'Vite'],
+        'Turn your physical closet into a digital inventory. FabrAIc leverages AI to analyze clothing images for seamless organization and instant outfit ideas.',
+      techStack: ['Python', 'Tensorflow', 'ResNet50', 'React' ],
       githubUrl: 'https://github.com/Redinferno1736/FabrAIc',
       demoUrl: 'https://github.com/example/readme-generator',
       isDeployed: false,
       imageSrc: '/assets/portfolio-website.jpg',
     },
     {
+      id: 3,
+      title: 'Alphawave',
+      description:'Fintech-EdTech platform ensembling BERT and LSTM for real-time risk scoring. It gamifies the learning experience with virtual trading competitions and mini-games to master emotional discipline.',
+      techStack: ['Python', 'BERT', 'LSTM', 'React','Next.js'],
+      githubUrl: 'https://github.com/AriseAk/AlphaWave',
+      demoUrl: 'https://demo.d-vote.com',
+      isDeployed: false,
+      imageSrc: '.',
+    },
+        {
       id: 3,
       title: 'CareBridgeAi',
       description:
@@ -49,26 +60,27 @@ const ProjectsSection = () => {
       isDeployed: false,
       imageSrc: carebridge,
     },
-    {
+                {
       id: 4,
+      title: 'MoodQuest',
+      description:'Enhance emotional self-awareness with MoodQuest. By analyzing real-time facial cues, it converts micro-expressions into actionable stress insights, visualized through a dashboard and a comforting pet companion',
+      techStack: [ 'ML','Flask','Next.js','OpenCV','Tailwind'],
+      githubUrl: 'https://github.com/Redinferno1736/MoodQuest',
+      demoUrl: '..',
+      isDeployed: false,
+      imageSrc: mood,
+    },
+    {
+      id: 5,
       title: 'HackArena',
       description:'HackArena is a platform designed to host and manage hackathons effortlessly,allows organizers to create and manage hackathons,while participants can register, form teams,and track progress in real time.',
-      techStack: [ 'Python', 'Flask','JavaScript','API'],
+      techStack: [ 'Python', 'Flask','JavaScript','OAuth','MongoDB'],
       githubUrl: 'https://github.com/AriseAk/HackArena',
       demoUrl: 'https://hackarena.onrender.com/',
       isDeployed: true,
       imageSrc: hackarena,
     },
-        {
-      id: 5,
-      title: 'Jarvis',
-      description:'JARVIS is a smart AI-powered assistant that helps users interact naturally through voice and text commands. It enables seamless file access, YouTube navigation, and personalized responses, enhancing productivity and convenience.',
-      techStack: [ 'Python', 'Flask','JavaScript','API','User-OAuth'],
-      githubUrl: 'https://github.com/AriseAk/Jarvis',
-      demoUrl: 'https://jarvis-4uec.onrender.com/',
-      isDeployed: true,
-      imageSrc: jarvis,
-    },
+
         {
       id: 6,
       title: 'Spotify-Clone',
@@ -79,6 +91,17 @@ const ProjectsSection = () => {
       isDeployed: true,
       imageSrc: spotify,
     },
+            {
+      id: 7,
+      title: 'Jarvis',
+      description:'JARVIS is a smart AI-powered assistant that helps users interact naturally through voice and text commands. It enables seamless file access, YouTube navigation, and personalized responses, enhancing productivity and convenience.',
+      techStack: [ 'Python', 'Flask','JavaScript','API','User-OAuth'],
+      githubUrl: 'https://github.com/AriseAk/Jarvis',
+      demoUrl: 'https://jarvis-4uec.onrender.com/',
+      isDeployed: true,
+      imageSrc: jarvis,
+    },
+
   ];
 
   useLayoutEffect(() => {
