@@ -18,7 +18,7 @@ const Footer = () => {
       
       {/* --- Main Content --- */}
       <div className="text-center space-y-4 mb-8 z-10 px-4">
-        <p className="text-gray-400 text-sm sm:text-base font-light tracking-wide">
+        <p className="text-[#ffffe3] text-sm sm:text-base font-light tracking-wide">
           Let's connect and build something amazing!
         </p>
         
@@ -32,7 +32,7 @@ const Footer = () => {
       </div>
 
       {/* --- Copyright (Bottom Center) --- */}
-      <div className="mt-12 text-gray-500 text-xs sm:text-sm">
+      <div className="mt-12 text-[#ffffe3] text-xs sm:text-sm">
         © 2025 Akshay Bhat. All rights reserved.
       </div>
 

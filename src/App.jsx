@@ -13,6 +13,7 @@ import Card from "./components/Card";
 import ScrollReveal from "./components/ScrollReveal";
 import ScrollFloat from "./components/ScrollFloat";
 import Divider from "./components/Divider";
+import Divider2 from "./components/Divider2";
 import Footer from "./components/Footer";
 import Textype from "./components/Textype";
 import LoadingScreen from './components/LoadingScreen';
@@ -98,6 +99,11 @@ useEffect(() => {
         duration: 1,
         ease: "none"
       })
+      .to(".dark-divider-wrapper", {
+        color: "#1a1a1a", 
+        duration: 1,
+        ease: "none"
+      }, "<")
       .to(".main-wrapper", {
         "--bg-color": "#b5b5a2", // End of Projects
         "--text-primary": "#2a2a2a",
@@ -288,7 +294,9 @@ useEffect(() => {
           <Space />
           </div>
 
-          <Divider />
+<div className="dark-divider-wrapper">
+    <Divider2 />
+</div>
                     <Space />
           <div id="contact-section">
               <ContactCard/>

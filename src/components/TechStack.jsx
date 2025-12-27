@@ -7,6 +7,8 @@ import { SiExpress, SiNetlify, SiRender, SiFlask, SiMysql, SiMongodb } from "rea
 // Assuming you have these assets, otherwise replace with placeholder or remove
 import cpp from "../assets/cpp.png"; 
 import java from "../assets/java.png";
+// Add these to your imports at the top
+import { SiTensorflow, SiPytorch, SiPandas, SiNumpy, SiScikitlearn, SiOpencv } from "react-icons/si";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -149,7 +151,13 @@ const TechStack = () => {
                       <SkillBox name="JavaScript" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
                       <SkillBox name="Python" icon={<FaPython className="text-[#3776ab]" />} />
                   </TechCategory>
-
+<TechCategory title="MACHINE LEARNING & AI">
+        <SkillBox name="TensorFlow" icon={<SiTensorflow className="text-[#FF6F00]"/>} />
+        <SkillBox name="PyTorch" icon={<SiPytorch className="text-[#EE4C2C]"/>} />
+        <SkillBox name="Scikit-learn" icon={<SiScikitlearn className="text-[#F7931E]"/>} />
+        <SkillBox name="Pandas" icon={<SiPandas className="text-[#150458]"/>} />
+        <SkillBox name="NumPy" icon={<SiNumpy className="text-[#013243]"/>} />
+    </TechCategory>
                   {/* FRONTEND SECTION */}
                   <TechCategory title="FRONTEND">
                       <SkillBox name="React" icon="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
