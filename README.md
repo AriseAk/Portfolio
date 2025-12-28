@@ -2,7 +2,7 @@
 
 A modern, interactive portfolio website built with React, featuring advanced animations, WebGL effects, and a sophisticated tech stack showcase. This portfolio demonstrates full-stack development capabilities with a focus on cutting-edge frontend technologies and creative visual effects.
 
-##Live Demo
+## Live Demo
 https://akshaybhat.vercel.app/
 
 ## 🌟 Features
