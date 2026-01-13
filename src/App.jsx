@@ -15,6 +15,7 @@ import LoadingScreen from './components/LoadingScreen';
 import TechStack from "./components/TechStack";
 import ProjectsSection from './components/ProjectsSection';
 import placeholder from "./assets/placeholder.png";
+import me from "./assets/me.jpeg";
 import StickyDock from "./components/StickyDock";
 import { FaCode } from "react-icons/fa";
 import { GoHomeFill } from "react-icons/go";
@@ -188,7 +189,7 @@ useEffect(() => {
                   className="first w-[20vw] h-full flex justify-center items-center rounded-xl"
                   ref={firstRef}
               >
-                  <img src={placeholder} alt="Profile" className="first w-full h-full object-cover " />
+                  <img src={me} alt="Profile" className="first w-full h-full object-cover " />
               </div>
               <div
                   className="second w-[40vw] h-full flex justify-center gap-3 flex-col"
