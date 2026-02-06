@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -46,5 +47,18 @@
     "globals": "^16.0.0",
     "postcss": "^8.5.4",
     "vite": "^6.3.5"
-  }
+  },
+  "description": "A modern, interactive portfolio website built with React, featuring advanced animations, WebGL effects, and a sophisticated tech stack showcase. This portfolio demonstrates full-stack development capabilities with a focus on cutting-edge frontend technologies and creative visual effects.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AriseAk/Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AriseAk/Portfolio/issues"
+  },
+  "homepage": "https://github.com/AriseAk/Portfolio#readme"
 }
