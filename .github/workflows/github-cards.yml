@@ -13,10 +13,13 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+          - uses: actions/checkout@v4
+            with:
+              ref: stats  # <--- THIS IS THE FIX. It switches to the stats branch.
 
-      - uses: vn7n24fzkq/github-profile-summary-cards@release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          USERNAME: ${{ github.repository_owner }}
+          - uses: vn7n24fzkq/github-profile-summary-cards@release
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              USERNAME: ${{ github.repository_owner }}
+              BRANCH_NAME: stats # Explicitly tells the tool to commit here

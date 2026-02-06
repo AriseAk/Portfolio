@@ -140,7 +140,7 @@ const TechStack = () => {
             <div className="flex flex-col gap-6 justify-center items-center lg:items-end h-full">
               <div className="relative w-full max-w-[320px] rounded- overflow-hidden border border-white/5 bg-white/5 hover:border-white/20 transition-all duration-300">
                 <img
-                  src="https://raw.githubusercontent.com/AriseAk/Portfolio/main/profile-summary-card-output/dark/3-stats.svg"
+                  src="https://raw.githubusercontent.com/AriseAk/Portfolio/stats/profile-summary-card-output/dark/3-stats.svg"
                   alt="GitHub Stats"
                   className="w-full opacity-90 hover:opacity-100 transition duration-300"
                   loading="lazy"
@@ -148,7 +148,7 @@ const TechStack = () => {
               </div>
               <div className="relative w-full max-w-[620px] rounded-lg overflow-hidden border border-white/5 bg-white/5 hover:border-white/20 transition-all duration-300">
                 <img
-                  src="https://raw.githubusercontent.com/AriseAk/Portfolio/main/profile-summary-card-output/dark/0-profile-details.svg"
+                  src="https://raw.githubusercontent.com/AriseAk/Portfolio/stats/profile-summary-card-output/dark/0-profile-details.svg"
                   alt="GitHub Profile Details"
                   className="w-full opacity-90 hover:opacity-100 transition duration-300"
                   loading="lazy"
@@ -156,7 +156,7 @@ const TechStack = () => {
               </div>
               <div className="relative w-full max-w-[320px] rounded- overflow-hidden border border-white/5 bg-white/5 hover:border-white/20 transition-all duration-300">
                 <img
-                  src="https://raw.githubusercontent.com/AriseAk/Portfolio/main/profile-summary-card-output/dark/4-productive-time.svg"
+                  src="https://raw.githubusercontent.com/AriseAk/Portfolio/stats/profile-summary-card-output/dark/4-productive-time.svg"
                   alt="GitHub Stats"
                   className="w-full opacity-90 hover:opacity-100 transition duration-300"
                   loading="lazy"
