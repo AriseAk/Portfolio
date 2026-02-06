@@ -1,0 +1,31 @@
+name: Portfolio-GitHub-Cards
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "profile-summary-cards/**"
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    # Prevent infinite commit loop
+    if: github.actor != 'github-actions[bot]'
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate GitHub Profile Summary Cards
+        uses: vn7n24fzkq/github-profile-summary-cards@release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          USERNAME: AriseAk
+          THEME: github_dark
