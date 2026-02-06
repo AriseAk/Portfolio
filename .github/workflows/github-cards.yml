@@ -1,10 +1,9 @@
 name: GitHub-Profile-Summary-Cards
 
 on:
-  push:
-    paths-ignore:
-      - "profile-summary-cards/**"
-  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *" # Runs every 24 hours (midnight UTC)
+  workflow_dispatch:      # Allows you to click "Run workflow" manually
 
 jobs:
   build:
@@ -12,9 +11,6 @@ jobs:
     name: generate-github-profile-summary-cards
     permissions:
       contents: write
-
-    # Prevent infinite loop when the action commits
-    if: github.actor != 'github-actions[bot]'
 
     steps:
       - uses: actions/checkout@v4
