@@ -139,7 +139,7 @@ const TechStack = () => {
           ref={boxRef}
           className="relative w-full max-w-5xl p-6 md:p-8 rounded-2xl border border-white/10 bg-[#10100e]/60 backdrop-blur-md shadow-2xl mr-auto"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="flex flex-rowgrid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
               
               {/* Left Column */}
               <div className="flex flex-col">
@@ -188,7 +188,24 @@ const TechStack = () => {
                       <SkillBox name="Render" icon={<SiRender className="text-white" />} />
                   </TechCategory>
               </div>
+<div className="flex flex-col gap-6 justify-start items-center lg:items-end">
 
+    <img
+      src="https://raw.githubusercontent.com/AriseAk/Portfolio/main/profile-summary-cards/default/0-profile-details.svg"
+
+      alt="GitHub Profile Details"
+      className="w-full max-w-[420px] opacity-90 hover:opacity-100 transition"
+      loading="lazy"
+    />
+
+    <img
+      src="https://raw.githubusercontent.com/AriseAk/AriseAk/main/profile-summary-cards/default/3-stats.svg"
+      alt="GitHub Stats"
+      className="w-full max-w-[420px] opacity-90 hover:opacity-100 transition"
+      loading="lazy"
+    />
+
+  </div>
           </div>
 
         </div>
