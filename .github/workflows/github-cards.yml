@@ -13,13 +13,22 @@ jobs:
       contents: write
 
     steps:
-          - uses: actions/checkout@v4
-            with:
-              ref: stats  # <--- THIS IS THE FIX. It switches to the stats branch.
+      - uses: actions/checkout@v4
+        with:
+          ref: stats
+          fetch-depth: 0 # IMPORTANT: Fetches history so we can attach to the branch
 
-          - uses: vn7n24fzkq/github-profile-summary-cards@release
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            with:
-              USERNAME: ${{ github.repository_owner }}
-              BRANCH_NAME: stats # Explicitly tells the tool to commit here
+      # --- THIS IS THE NEW FIX ---
+      - name: Setup Git Context
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout stats
+      # ---------------------------
+
+      - uses: vn7n24fzkq/github-profile-summary-cards@release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          USERNAME: ${{ github.repository_owner }}
+          BRANCH_NAME: stats
