@@ -137,7 +137,7 @@ const TechStack = () => {
               </TechCategory>
             </div>
 
-            <div className="flex flex-col gap-6 justify-center items-center lg:items-end h-full">
+            <div className="flex flex-col gap-6 justify-center items-center w-[35vw] ">
               <div className="relative w-full max-w-[320px] rounded- overflow-hidden border border-white/5 bg-white/5 hover:border-white/20 transition-all duration-300">
                 <img
                   src="https://raw.githubusercontent.com/AriseAk/Portfolio/stats/profile-summary-card-output/dark/3-stats.svg"
