@@ -26,7 +26,6 @@ import gsap from "gsap";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { PiCardsFill } from "react-icons/pi";
-import { div } from "framer-motion/client";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,6 +41,10 @@ function App() {
     const [linkedinHover, setLinkedinHover] = useState(false);
     const [githubHover, setGithubHover] = useState(false);
     const [gmailHover, setGmailHover] = useState(false);
+    
+    // State to track if screen is large (for StickyDock sizing)
+    const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1350);
+
     const firstRef = useRef(null);
     const secondRef = useRef(null);
 
@@ -49,6 +52,15 @@ function App() {
     useEffect(() => {
         const timer = setTimeout(() => setLoading(false), 2000);
         return () => clearTimeout(timer);
+    }, []);
+
+    // Handle resize for StickyDock
+    useEffect(() => {
+        const handleResize = () => {
+            setIsLargeScreen(window.innerWidth >= 1350);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     // Photo reveal animations
@@ -67,60 +79,54 @@ function App() {
             );
         }
     }, [loading]);
+
     useEffect(() => {
         if (!loading) {
             const ctx = gsap.context(() => {
-                // Create one master timeline for the whole page
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: ".main-wrapper",
                         start: "top top",
                         end: "bottom bottom",
-                        scrub: 1, // Smoothing out the transition
+                        scrub: 1,
                     }
                 });
 
-                // Chain the colors together seamlessly
                 tl.to(".main-wrapper", {
-                    "--bg-color": "#10100e", // End of Home
+                    "--bg-color": "#10100e",
                     "--text-stroke": "rgba(255, 255, 227, 0.3)",
                     duration: 1,
                     ease: "none"
                 })
-                    .to(".main-wrapper", {
-                        "--bg-color": "#4c4c42", // End of Skills
-                        "--text-primary": "#f0f0d8",
-                        duration: 1,
-                        ease: "none"
-                    })
-                    .to(".dark-divider-wrapper", {
-                        color: "#1a1a1a",
-                        duration: 1,
-                        ease: "none"
-                    }, "<")
-                    .to(".main-wrapper", {
-                        "--bg-color": "#b5b5a2", // End of Projects
-                        "--text-primary": "#2a2a2a",
-                        "--text-stroke": "rgba(26, 26, 26, 0.2)",
-                        duration: 1,
-                        ease: "none"
-                    })
-                    .to(".main-wrapper", {
-                        "--bg-color": "#ffffe3", // Final (Contact)
-                        "--text-primary": "#1a1a1a",
-                        duration: 1,
-                        ease: "none"
-                    });
+                .to(".main-wrapper", {
+                    "--bg-color": "#4c4c42",
+                    "--text-primary": "#f0f0d8",
+                    duration: 1,
+                    ease: "none"
+                })
+                .to(".dark-divider-wrapper", {
+                    color: "#1a1a1a",
+                    duration: 1,
+                    ease: "none"
+                }, "<")
+                .to(".main-wrapper", {
+                    "--bg-color": "#b5b5a2",
+                    "--text-primary": "#2a2a2a",
+                    "--text-stroke": "rgba(26, 26, 26, 0.2)",
+                    duration: 1,
+                    ease: "none"
+                })
+                .to(".main-wrapper", {
+                    "--bg-color": "#ffffe3",
+                    "--text-primary": "#1a1a1a",
+                    duration: 1,
+                    ease: "none"
+                });
             });
 
             return () => ctx.revert();
         }
-
-
     }, [loading]);
-
-
-
 
     if (loading) {
         return (
@@ -130,14 +136,10 @@ function App() {
         );
     }
 
-
-
     return (
         <div>
             <div className="main-wrapper margin -water">
-
                 <>
-                    {/* LightRays background */}
                     <LightRays
                         raysOrigin="top-center"
                         raysColor="#00ffff"
@@ -151,17 +153,26 @@ function App() {
                         className="absolute top-0 left-0 w-full h-screen pointer-events-none z-0 light-rays-container"
                     />
 
-                    {/* All content above the background */}
                     <div className="relative z-10">
-                        <StickyDock items={items} baseSize={40} magnify={60} />
+                        {/* Sticky Dock */}
+                        <StickyDock 
+                            items={items} 
+                            baseSize={isLargeScreen ? 40 : 34} 
+                            magnify={isLargeScreen ? 60 : 50} 
+                        />
 
-                        <div id="home-section">
+                        {/* Navbar Centered */}
+                        <div id="home-section" >
                             <Navbar />
                         </div>
 
-                        {/* Hero Section */}
-                        <div className="container flex h-[25vh] justify-center -mt-[60px]">
-                            <div className="left flex justify-center items-center w-[25vw]">
+                        {/* --- RESPONSIVE HERO SECTION --- */}
+                        {/* Desktop (min-1350px): Matches your exact snippet (flex row, h-[25vh], -mt-[60px])
+                            Mobile: Flex column, h-auto, mt-4 
+                        */}
+                        <div className="container flex flex-col min-[1350px]:flex-row h-auto min-[1350px]:h-[25vh] justify-center items-center mt-4 min-[1350px]:-mt-[60px]">
+                            
+                            <div className="left flex justify-center items-center w-full min-[1350px]:w-[25vw] mb-1 min-[1350px]:mb-0">
                                 <div className="text-[#ffffe3] text-4xl font-bold gap-[10px]">
                                     <Textype
                                         text={["FULL STACK", ""]}
@@ -174,28 +185,42 @@ function App() {
                                     />
                                 </div>
                             </div>
-                            <div className="right w-[60vw] flex justify-center items-center text-[140px] font-bold text-[#ffffe3]">
+                            
+                            <div className="right w-full min-[1350px]:w-[60vw] flex justify-center items-center text-[12vw] min-[1350px]:text-[140px] font-bold text-[#ffffe3]">
                                 <DecryptedText text="DEVELOPER" />
                             </div>
                         </div>
 
-                        <div className="inside box flex w-[70vw] justify-center text-[140px] font-bold outline -mt-[50px]">
+                        {/* Desktop (min-1350px): Matches your exact snippet (w-[70vw], text-[140px], -mt-[50px])
+                            Mobile: w-full, text-[12vw], mt-1
+                        */}
+                        <div className="inside box flex w-full min-[1350px]:w-[70vw] justify-center text-[12vw] min-[1350px]:text-[140px] font-bold outline mt-1 min-[1350px]:-mt-[50px]">
                             <DecryptedText text="CASEBOOK" />
                         </div>
 
-                        {/* Photo Section with Reveal Animation */}
-                        <div className="photo flex justify-center h-[45vh] gap-3">
+                        {/* --- RESPONSIVE PHOTO SECTION --- */}
+                        <div className="photo flex flex-col min-[1350px]:flex-row justify-center items-center h-auto min-[1350px]:h-[45vh] gap-5 min-[1350px]:gap-3 mt-6 min-[1350px]:mt-0">
+                            
                             <div
-                                className="first w-[20vw] h-full flex justify-center items-center rounded-xl"
+                                className="first w-[50vw] h-[30vh] min-[1350px]:w-[20vw] min-[1350px]:h-full flex justify-center items-center rounded-xl"
                                 ref={firstRef}
                             >
-                                <img src={me} alt="Profile" className="first w-full h-full object-cover " />
+                                <img src={me} alt="Profile" className="first w-full h-full object-cover rounded-xl" />
                             </div>
+
                             <div
-                                className="second w-[40vw] h-full flex justify-center gap-3 flex-col"
+                                className="second w-[90vw] min-[1350px]:w-[40vw] h-auto min-[1350px]:h-full flex justify-center gap-4 min-[1350px]:gap-3 flex-col items-center min-[1350px]:items-start"
                                 ref={secondRef}
                             >
-                                <span className="card-component-button3 text-[15px]">
+                                {/* Shorter Text for Mobile (Hidden on Desktop) */}
+                                <span className="card-component-button3 text-[15px] text-left block min-[1350px]:hidden">
+                                    Hello! I’m Akshay, a passionate Developer building scalable applications. I thrive where innovation meets logic, turning abstract ideas into reality. 
+                                    <br />
+                                    Let’s connect and create something amazing!
+                                </span>
+
+                                {/* Full Text for Desktop (Hidden on Mobile) */}
+                                <span className="card-component-button3 text-[15px] text-justify hidden min-[1350px]:block">
                                     Hello! I’m Akshay, a passionate Developer dedicated to the craft of building scalable applications. I thrive in
                                     dynamic environments where innovation meets logic, using my background
                                     to turn abstract ideas into reality.
@@ -204,103 +229,131 @@ function App() {
                                     <br />
                                     Let’s connect and create something amazing together!
                                 </span>
-                                <div className="resume flex">
-
-                                    <a
-                                        href="/resume.pdf"
-                                        download="AkshayBhat_Resume.pdf" // This forces the download and sets the filename
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <button className="inline-flex items-center justify-center no-underline btn cursor-pointer">
-                                            Resume
-                                        </button>
-                                    </a>
-                                </div>
-                                <div className="links pl-[50px] w-[10vw] flex flex-row justify-center items-center gap-6">
-                                    <a
-                                        href="https://www.linkedin.com/in/akshay-bhat-a2900a333/"
-                                        onMouseEnter={() => setLinkedinHover(true)}
-                                        onMouseLeave={() => setLinkedinHover(false)}
-                                        className="relative flex flex-col items-center"
-                                    >
-                                        <IoLogoLinkedin className="size" />
-                                        <div className="absolute top-[110%]">
-                                            <BlurText
-                                                text="LinkedIn"
-                                                delay={100}
-                                                trigger={linkedinHover}
-                                                className="text-sm"
-                                            />
-                                        </div>
-                                    </a>
-                                    <a
-                                        href="https://github.com/AriseAk"
-                                        onMouseEnter={() => setGithubHover(true)}
-                                        onMouseLeave={() => setGithubHover(false)}
-                                        className="relative flex flex-col items-center"
-                                    >
-                                        <IoLogoGithub className="size" />
-                                        <div className="absolute top-[110%]">
-                                            <BlurText
-                                                text="GitHub"
-                                                delay={100}
-                                                trigger={githubHover}
-                                                className="text-sm"
-                                            />
-                                        </div>
-                                    </a>
-                                    <a
-                                        href="mailto:akshay.code.bhat@gmail.com"
-                                        onMouseEnter={() => setGmailHover(true)}
-                                        onMouseLeave={() => setGmailHover(false)}
-                                        className="relative flex flex-col items-center"
-                                    >
-                                        <BiLogoGmail className="size" />
-                                        <div className="absolute top-[110%]">
-                                            <BlurText
-                                                text="Email"
-                                                delay={100}
-                                                trigger={gmailHover}
-                                                className="text-sm"
-                                            />
-                                        </div>
-                                    </a>
+                                
+                                <div className="flex flex-col w-full gap-6 items-center min-[1350px]:items-start mt-4">
+                                    <div className="resume flex">
+                                        <a
+                                            href="/resume.pdf"
+                                            download="AkshayBhat_Resume.pdf"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <button className="inline-flex items-center justify-center no-underline btn cursor-pointer">
+                                                Resume
+                                            </button>
+                                        </a>
+                                    </div>
+                                    
+                                    <div className="links w-full flex flex-row justify-center min-[1350px]:justify-start items-center gap-6">
+                                        <a
+                                            href="https://www.linkedin.com/in/akshay-bhat-a2900a333/"
+                                            onMouseEnter={() => setLinkedinHover(true)}
+                                            onMouseLeave={() => setLinkedinHover(false)}
+                                            className="relative flex flex-col items-center"
+                                        >
+                                            <IoLogoLinkedin className="size" />
+                                            <div className="absolute top-[110%]">
+                                                <BlurText
+                                                    text="LinkedIn"
+                                                    delay={100}
+                                                    trigger={linkedinHover}
+                                                    className="text-sm"
+                                                />
+                                            </div>
+                                        </a>
+                                        <a
+                                            href="https://github.com/AriseAk"
+                                            onMouseEnter={() => setGithubHover(true)}
+                                            onMouseLeave={() => setGithubHover(false)}
+                                            className="relative flex flex-col items-center"
+                                        >
+                                            <IoLogoGithub className="size" />
+                                            <div className="absolute top-[110%]">
+                                                <BlurText
+                                                    text="GitHub"
+                                                    delay={100}
+                                                    trigger={githubHover}
+                                                    className="text-sm"
+                                                />
+                                            </div>
+                                        </a>
+                                        <a
+                                            href="mailto:akshay.code.bhat@gmail.com"
+                                            onMouseEnter={() => setGmailHover(true)}
+                                            onMouseLeave={() => setGmailHover(false)}
+                                            className="relative flex flex-col items-center"
+                                        >
+                                            <BiLogoGmail className="size" />
+                                            <div className="absolute top-[110%]">
+                                                <BlurText
+                                                    text="Email"
+                                                    delay={100}
+                                                    trigger={gmailHover}
+                                                    className="text-sm"
+                                                />
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <Space />
+                        {/* SPACE 1: After Photo Section */}
+                        {/* Mobile: 64px spacer | Desktop: Full <Space /> */}
+                        <div className="block min-[1350px]:hidden h-16"></div>
+                        <div className="hidden min-[1350px]:block">
+                            <Space />
+                        </div>
+                        
                         <Divider />
 
                         <div id="skills-section">
-
                             <TechStack />
                         </div>
-                        <div id="after-skills"><Space /></div>
+                        
+                        {/* SPACE 2: After Skills */}
+                        <div id="after-skills">
+                            <div className="block min-[1350px]:hidden h-16"></div>
+                            <div className="hidden min-[1350px]:block">
+                                <Space />
+                            </div>
+                        </div>
 
                         <Divider />
 
                         <div id="projects-section">
                             <ProjectsSection />
                         </div>
+
+                        {/* SPACE 3: After Projects */}
                         <div id="after-projects">
-                            <Space />
+                            <div className="block min-[1350px]:hidden h-16"></div>
+                            <div className="hidden min-[1350px]:block">
+                                <Space />
+                            </div>
                         </div>
 
                         <div className="dark-divider-wrapper">
                             <Divider2 />
                         </div>
-                        <Space />
-                        <div id="contact-section">
-                            <ContactCard />
 
+                        {/* SPACE 4: Before Contact */}
+                        <div className="block min-[1350px]:hidden h-16"></div>
+                        <div className="hidden min-[1350px]:block">
+                            <Space />
                         </div>
 
+                        <div id="contact-section">
+                            <ContactCard />
+                        </div>
 
                     </div>
-                    <Space />
-
+                    
+                    {/* SPACE 5: Bottom Spacer */}
+                    <div className="block min-[1350px]:hidden h-16"></div>
+                    <div className="hidden min-[1350px]:block">
+                        <Space />
+                    </div>
                 </>
 
             </div>
@@ -308,6 +361,5 @@ function App() {
         </div>
     );
 }
-
 
 export default App;
