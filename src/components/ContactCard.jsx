@@ -180,7 +180,8 @@ const ContactCard = () => {
           {/* Send Button */}
           <button
             type="submit"
-            className="group flex items-center justify-center gap-3 bg-[#1f1f1a] text-[#ffffe3] p-3 rounded-lg  card-component-button text-[15px] font-semibold"
+            className="no-global-css group flex items-center justify-center gap-3 bg-[#1f1f1a] text-[#ffffe3] p-3 rounded-lg 
+             card-component-button text-[15px] font-semibold"
           >
             <span>{buttonText}</span> {/* Logic Update: Uses state variable */}
             <IoSend className="text-[15px] h-[20px] w-[20px] "/>
