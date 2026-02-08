@@ -105,7 +105,7 @@ import React, { useRef, useLayoutEffect } from 'react';
         <div className="tech-stack__container w-full">
           {/* Title: Centered on Mobile, Normal Block on Desktop */}
           <div className="tech-stack__title mb-10 flex justify-center min-[1350px]:block" ref={titleRef}>
-            <h1 className="tech-stack__title-text text-5xl md:text-7xl font-bold text-[#ffffe3]">Tech Stack</h1>
+            <h1 className="tech-stack__title-text w-full text-6xl md:text-7xl font-bold text-[#ffffe3]">Tech Stack</h1>
           </div>
 
           {/* MAIN BOX CONTAINER */}

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 
-const ProjectCard = ({ title, description, techStack, primaryButtonText, primaryButtonUrl, githubUrl ,imageSrc }) => {
+const ProjectCard = ({ title, description, techStack, primaryButtonText, primaryButtonUrl, githubUrl, imageSrc }) => {
   const cardRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -22,47 +22,40 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
     <div
       ref={cardRef}
       className={`
-        max-w-sm w-full mx-auto
+        max-w-sm w-full mx-auto max-h-60
         rounded-2xl overflow-hidden
         bg-[#2e2e26]
         
         transition-all duration-700 ease-out transform
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
         hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:scale-[1.02]
-        flex flex-col
+        flex flex-col min-[1150px]:max-h-[500px]
       `}
     >
       {/* Top Section */}
-      <div className="w-full h-44 flex items-center justify-center bg-black rounded-t-2xl border-b border-[#ffffe358]">
-<img 
-            src={imageSrc} 
-            alt={`Screenshot of the ${title} project`} 
-            className="  w-full h-full text-[#10100e] bg-transparent object-cover"
+      <div className="w-full h-30 flex items-center justify-center bg-black rounded-t-2xl border-b border-[#ffffe358] min-[1150px]:h-44">
+        <img 
+          src={imageSrc} 
+          alt={`Screenshot of the ${title} project`} 
+          className="w-full h-full text-[#10100e] bg-transparent object-cover"
         />
-          {/* <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="1.5"
-            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-          ></path> */}
-        
       </div>
 
       {/* Content Area */}
       <div className="p-6 flex flex-col justify-between flex-grow bg-transparent">
         <div className="space-y-5 bg-transparent">
           {/* Title */}
-          <h2 className="text-2xl font-semibold text-[#ffffe3] bg-transparent card-component-button3">
+          <h2 className="text-lg font-semibold text-[#ffffe3] bg-transparent card-component-button3 min-[1150px]:text-2xl">
             {title}
           </h2>
 
-          {/* Description */}
-          <p className="text-base text-[#ffffe3] bg-transparent leading-relaxed card-component-button3">
+          {/* Description - Hidden on screens < 1150px */}
+          <p className="text-base text-[#ffffe3] bg-transparent leading-relaxed card-component-button3 hidden min-[1150px]:block">
             {description}
           </p>
 
-          {/* Tech Stack */}
-          <div className="flex flex-wrap gap-2 pt-1 bg-transparent">
+          {/* Tech Stack - Hidden on screens < 1150px */}
+          <div className="flex-wrap gap-2 pt-1 bg-transparent hidden min-[1150px]:flex">
             {techStack.map((tech, index) => (
               <span
                 key={index}
@@ -77,8 +70,8 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
           </div>
         </div>
 
-        {/* Buttons */}
-        <div className="flex flex-row gap-4 pt-6 bg-transparent mt-auto">
+        {/* Buttons - Side by side on >= 1150px, stacked below */}
+        <div className="flex flex-col  min-[1150px]:flex-row gap-4 pt-6 bg-transparent mt-auto">
           {/* Primary Button */}
           <a
             href={primaryButtonUrl}

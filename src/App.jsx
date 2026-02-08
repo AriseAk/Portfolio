@@ -154,22 +154,16 @@ function App() {
                     />
 
                     <div className="relative z-10">
-                        {/* Sticky Dock */}
                         <StickyDock 
                             items={items} 
                             baseSize={isLargeScreen ? 40 : 34} 
                             magnify={isLargeScreen ? 60 : 50} 
                         />
 
-                        {/* Navbar Centered */}
                         <div id="home-section" >
                             <Navbar />
                         </div>
 
-                        {/* --- RESPONSIVE HERO SECTION --- */}
-                        {/* Desktop (min-1350px): Matches your exact snippet (flex row, h-[25vh], -mt-[60px])
-                            Mobile: Flex column, h-auto, mt-4 
-                        */}
                         <div className="container flex flex-col min-[1350px]:flex-row h-auto min-[1350px]:h-[25vh] justify-center items-center mt-4 min-[1350px]:-mt-[60px]">
                             
                             <div className="left flex justify-center items-center w-full min-[1350px]:w-[25vw] mb-1 min-[1350px]:mb-0">
@@ -191,14 +185,10 @@ function App() {
                             </div>
                         </div>
 
-                        {/* Desktop (min-1350px): Matches your exact snippet (w-[70vw], text-[140px], -mt-[50px])
-                            Mobile: w-full, text-[12vw], mt-1
-                        */}
                         <div className="inside box flex w-full min-[1350px]:w-[70vw] justify-center text-[12vw] min-[1350px]:text-[140px] font-bold outline mt-1 min-[1350px]:-mt-[50px]">
                             <DecryptedText text="CASEBOOK" />
                         </div>
 
-                        {/* --- RESPONSIVE PHOTO SECTION --- */}
                         <div className="photo flex flex-col min-[1350px]:flex-row justify-center items-center h-auto min-[1350px]:h-[45vh] gap-5 min-[1350px]:gap-3 mt-6 min-[1350px]:mt-0">
                             
                             <div
@@ -298,8 +288,6 @@ function App() {
                             </div>
                         </div>
 
-                        {/* SPACE 1: After Photo Section */}
-                        {/* Mobile: 64px spacer | Desktop: Full <Space /> */}
                         <div className="block min-[1350px]:hidden h-16"></div>
                         <div className="hidden min-[1350px]:block">
                             <Space />
@@ -310,8 +298,7 @@ function App() {
                         <div id="skills-section">
                             <TechStack />
                         </div>
-                        
-                        {/* SPACE 2: After Skills */}
+
                         <div id="after-skills">
                             <div className="block min-[1350px]:hidden h-16"></div>
                             <div className="hidden min-[1350px]:block">
@@ -325,7 +312,6 @@ function App() {
                             <ProjectsSection />
                         </div>
 
-                        {/* SPACE 3: After Projects */}
                         <div id="after-projects">
                             <div className="block min-[1350px]:hidden h-16"></div>
                             <div className="hidden min-[1350px]:block">
@@ -337,7 +323,6 @@ function App() {
                             <Divider2 />
                         </div>
 
-                        {/* SPACE 4: Before Contact */}
                         <div className="block min-[1350px]:hidden h-16"></div>
                         <div className="hidden min-[1350px]:block">
                             <Space />
@@ -349,7 +334,6 @@ function App() {
 
                     </div>
                     
-                    {/* SPACE 5: Bottom Spacer */}
                     <div className="block min-[1350px]:hidden h-16"></div>
                     <div className="hidden min-[1350px]:block">
                         <Space />

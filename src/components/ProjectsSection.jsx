@@ -19,7 +19,7 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: 'Portfolio Website',
+      title: 'Portfolio ',
       description:
         'A responsive, component-driven portfolio constructed using the React library and Tailwind CSS utilities to demonstrate the software projects.',
       techStack: ['React', 'Tailwind CSS','Vite','Vercel'],
@@ -49,8 +49,8 @@ const ProjectsSection = () => {
       isDeployed: false,
       imageSrc: '.',
     },
-        {
-      id: 3,
+    {
+      id: 4,
       title: 'CareBridgeAi',
       description:
         'A comprehensive system designed to provide immediate help, support, and vital information to those in need,specifically fine-tuned on medical dialogues to provide relevant, conversational responses.',
@@ -60,8 +60,8 @@ const ProjectsSection = () => {
       isDeployed: false,
       imageSrc: carebridge,
     },
-                {
-      id: 4,
+    {
+      id: 5,
       title: 'MoodQuest',
       description:'Enhance emotional self-awareness with MoodQuest. By analyzing real-time facial cues, it converts micro-expressions into actionable stress insights, visualized through a dashboard and a comforting pet companion',
       techStack: [ 'ML','Flask','Next.js','OpenCV','Tailwind'],
@@ -71,7 +71,7 @@ const ProjectsSection = () => {
       imageSrc: mood,
     },
     {
-      id: 5,
+      id: 6,
       title: 'HackArena',
       description:'HackArena is a platform designed to host and manage hackathons effortlessly,allows organizers to create and manage hackathons,while participants can register, form teams,and track progress in real time.',
       techStack: [ 'Python', 'Flask','JavaScript','OAuth','MongoDB'],
@@ -80,9 +80,8 @@ const ProjectsSection = () => {
       isDeployed: true,
       imageSrc: hackarena,
     },
-
-        {
-      id: 6,
+    {
+      id: 7,
       title: 'Spotify-Clone',
       description:'This project is a Spotify Clone, designed with HTML, CSS, and JavaScript. It mimics the appearanceand basic functionalities of Spotify, including a dynamic UI, music playback controls, and a responsive layout.',
       techStack: [ 'HTML','CSS','JavaScript'],
@@ -91,8 +90,8 @@ const ProjectsSection = () => {
       isDeployed: true,
       imageSrc: spotify,
     },
-            {
-      id: 7,
+    {
+      id: 8,
       title: 'Jarvis',
       description:'JARVIS is a smart AI-powered assistant that helps users interact naturally through voice and text commands. It enables seamless file access, YouTube navigation, and personalized responses, enhancing productivity and convenience.',
       techStack: [ 'Python', 'Flask','JavaScript','API','User-OAuth'],
@@ -101,29 +100,62 @@ const ProjectsSection = () => {
       isDeployed: true,
       imageSrc: jarvis,
     },
-
   ];
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        titleRef.current,
-        { x: 0, opacity: 0, filter: 'blur(8px)' },
-        {
-          x: '55vw',
-          opacity: 1,
-          filter: 'blur(0px)',
-          duration: 3,
-          ease: 'power4.out',
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: 'top 85%',
-            end: 'top 50%',
-            scrub: 1,
-            toggleActions: 'play none none reverse',
+      // Check screen width
+      const isSmallScreen = window.innerWidth < 1150;
+
+      if (isSmallScreen) {
+        // Animation for SMALL screens (< 1150px) - ADJUST THESE VALUES
+        gsap.fromTo(
+          titleRef.current,
+          { 
+            x: 0,           // Starting X position
+            opacity: 0,     // Starting opacity
+            filter: 'blur(8px)' 
           },
-        }
-      );
+          {
+            x: '0vw',       // Ending X position - CHANGE THIS VALUE
+            opacity: 1,     // Ending opacity
+            filter: 'blur(0px)',
+            duration: 3,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: titleRef.current,
+              start: 'top 85%',
+              end: 'top 50%',
+              scrub: 1,
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      } else {
+        // Animation for LARGE screens (>= 1150px) - ADJUST THESE VALUES
+        gsap.fromTo(
+          titleRef.current,
+          { 
+            x: 0,           // Starting X position
+            opacity: 0,     // Starting opacity
+            filter: 'blur(8px)' 
+          },
+          {
+            x: '55vw',      // Ending X position - CHANGE THIS VALUE
+            opacity: 1,     // Ending opacity
+            filter: 'blur(0px)',
+            duration: 3,
+            ease: 'power4.out',
+            scrollTrigger: {
+              trigger: titleRef.current,
+              start: 'top 85%',
+              end: 'top 50%',
+              scrub: 1,
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
 
       ScrollTrigger.refresh();
     }, containerRef);
@@ -135,13 +167,13 @@ const ProjectsSection = () => {
     <section ref={containerRef} className="pt-16 pb-16 px-4 sm:px-8 bg-transparent">
       <div className="tech-stack__container">
         <div className="tech-stack__title" ref={titleRef}>
-          <h1 className="tech-stack__title-text ">Projects</h1>
+          <h1 className="tech-stack__title-text text-[55px] min-[1150px]:text-[length:inherit] font-semibold">Projects</h1>
         </div>
       </div>
 
-      <main
+      <main 
         className="grid 
-        grid-cols-3 sm:grid-cols-2 lg:grid-cols-3
+        grid-cols-2 min-[1150px]:grid-cols-3
         max-w-7xl mx-auto
         gap-10 lg:gap-14
         place-items-stretch "
