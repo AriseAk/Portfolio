@@ -33,14 +33,16 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
       `}
     >
       <div className="w-full h-30 flex items-center justify-center bg-black rounded-t-2xl border-b border-[#ffffe358] min-[1150px]:h-44">
-        <img 
-          src={imageSrc} 
-          alt={`Screenshot of the ${title} project`} 
+        <img
+          src={imageSrc}
+          alt={`Screenshot of the ${title} project`}
           className="w-full h-full text-[#10100e] bg-transparent object-cover"
         />
       </div>
 
-      <div className="p-6 flex flex-col justify-between flex-grow bg-transparent">
+      <div className="p-6 flex flex-col flex-grow bg-transparent min-[1150px]:justify-between">
+
+        {/* TOP CONTENT */}
         <div className="space-y-5 bg-transparent">
           <h2 className="text-lg font-semibold text-[#ffffe3] bg-transparent card-component-button3 min-[1150px]:text-2xl">
             {title}
@@ -49,54 +51,60 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
           <p className="text-base text-[#ffffe3] bg-transparent leading-relaxed card-component-button3 hidden min-[1150px]:block">
             {description}
           </p>
+        </div>
 
-          <div className="flex-wrap gap-2 pt-1 bg-transparent hidden min-[1150px]:flex">
+
+        {/* BOTTOM FIXED AREA (tech stack + buttons) */}
+        <div className="mt-auto flex flex-col gap-6">
+
+          <div className="flex-wrap gap-2 bg-transparent hidden min-[1150px]:flex">
             {techStack.map((tech, index) => (
               <span
                 key={index}
                 className="px-[8px] py-[2px] text-xs font-medium rounded-full
-                           text-[#ffffe3] bg-[#10100e]
-                           transition duration-300 hover:scale-[1.05]
-                           shadow-sm card-component-button3"
+                     text-[#ffffe3] bg-[#10100e]
+                     transition duration-300 hover:scale-[1.05]
+                     shadow-sm card-component-button3"
               >
                 {tech}
               </span>
             ))}
           </div>
+
+          <div className="flex flex-col min-[1150px]:flex-row gap-4 bg-transparent">
+            <a
+              href={primaryButtonUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card-component-button3 flex-1 py-3 px-6 text-center text-lg font-bold rounded-xl
+                   text-[#ffffe3] bg-[#10100e]
+                   shadow-md transition duration-300 transform
+                   hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,255,227,0.4)]
+                   focus:outline-none focus:ring-4 focus:ring-[#ffffe3] focus:ring-opacity-30
+                   flex items-center justify-center gap-2 card-component-button1"
+            >
+              <FiExternalLink className="text-xl" />
+              {primaryButtonText}
+            </a>
+
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card-component-button3 flex-1 py-3 px-6 text-center text-lg font-bold rounded-xl
+                   text-[#ffffe3] bg-[#10100e]
+                   shadow-md transition duration-300 transform
+                   hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,255,227,0.4)]
+                   focus:outline-none focus:ring-4 focus:ring-opacity-30
+                   flex items-center justify-center gap-2 card-component-button1"
+            >
+              <FaGithub className="text-xl" />
+              GitHub
+            </a>
+          </div>
+
         </div>
 
-        <div className="flex flex-col  min-[1150px]:flex-row gap-4 pt-6 bg-transparent mt-auto">
-          <a
-            href={primaryButtonUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card-component-button3 flex-1 py-3 px-6 text-center text-lg font-bold rounded-xl
-                       text-[#ffffe3] bg-[#10100e]
-                       shadow-md transition duration-300 transform
-                       hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,255,227,0.4)]
-                       focus:outline-none focus:ring-4 focus:ring-[#ffffe3] focus:ring-opacity-30
-                       flex items-center justify-center gap-2 card-component-button1"
-          >
-            <FiExternalLink className="text-xl" />
-            {primaryButtonText}
-          </a>
-
-          <a
-            href={githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card-component-button3 flex-1 py-3 px-6 text-center text-lg font-bold rounded-xl
-                       text-[#ffffe3] bg-[#10100e]
-                       
-                       shadow-md transition duration-300 transform
-                       hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,255,227,0.4)]
-                       focus:outline-none focus:ring-4 focus:ring-opacity-30
-                       flex items-center justify-center gap-2 card-component-button1"
-          >
-            <FaGithub className="text-xl" />
-            GitHub
-          </a>
-        </div>
       </div>
     </div>
   );

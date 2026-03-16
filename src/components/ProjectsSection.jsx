@@ -44,7 +44,7 @@ const ProjectsSection = () => {
           {
       id: 3,
       title: 'DuneLens',
-      description: 'A semantic segmentation system for desert /offroad UGV imagery. It uses a fine-tuned SegFormer-B2 as the primary model. A Next.js frontend provides a live prediction interface backed by a FastAPI inference server.',
+      description: 'A semantic segmentation system for desert/offroad UGV imagery. It uses a fine-tuned SegFormer-B2 as the primary model. A Next.js frontend provides a live prediction interface backed by a FastAPI inference server.',
       techStack: ['Transformer','ML','Python', 'Flask', 'Next.js'],
       githubUrl: 'https://github.com/AriseAk/DuneLens',
       demoUrl: 'https://github.com/AriseAk/DuneLens',
