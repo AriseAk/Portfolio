@@ -32,7 +32,6 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
         flex flex-col min-[1150px]:max-h-[500px]
       `}
     >
-      {/* Top Section */}
       <div className="w-full h-30 flex items-center justify-center bg-black rounded-t-2xl border-b border-[#ffffe358] min-[1150px]:h-44">
         <img 
           src={imageSrc} 
@@ -41,20 +40,16 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
         />
       </div>
 
-      {/* Content Area */}
       <div className="p-6 flex flex-col justify-between flex-grow bg-transparent">
         <div className="space-y-5 bg-transparent">
-          {/* Title */}
           <h2 className="text-lg font-semibold text-[#ffffe3] bg-transparent card-component-button3 min-[1150px]:text-2xl">
             {title}
           </h2>
 
-          {/* Description - Hidden on screens < 1150px */}
           <p className="text-base text-[#ffffe3] bg-transparent leading-relaxed card-component-button3 hidden min-[1150px]:block">
             {description}
           </p>
 
-          {/* Tech Stack - Hidden on screens < 1150px */}
           <div className="flex-wrap gap-2 pt-1 bg-transparent hidden min-[1150px]:flex">
             {techStack.map((tech, index) => (
               <span
@@ -70,9 +65,7 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
           </div>
         </div>
 
-        {/* Buttons - Side by side on >= 1150px, stacked below */}
         <div className="flex flex-col  min-[1150px]:flex-row gap-4 pt-6 bg-transparent mt-auto">
-          {/* Primary Button */}
           <a
             href={primaryButtonUrl}
             target="_blank"
@@ -88,7 +81,6 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
             {primaryButtonText}
           </a>
 
-          {/* GitHub Button */}
           <a
             href={githubUrl}
             target="_blank"
@@ -102,7 +94,7 @@ const ProjectCard = ({ title, description, techStack, primaryButtonText, primary
                        flex items-center justify-center gap-2 card-component-button1"
           >
             <FaGithub className="text-xl" />
-            GitHub Repo
+            GitHub
           </a>
         </div>
       </div>

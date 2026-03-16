@@ -105,19 +105,18 @@ const ProjectsSection = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Check screen width
       const isSmallScreen = window.innerWidth < 1150;
 
       if (isSmallScreen) {
         gsap.fromTo(
           titleRef.current,
           {
-            x: '80vw',        // start from right (off screen)
+            x: '80vw',
             opacity: 0,
             filter: 'blur(8px)'
           },
           {
-            x: 0,             // move to normal position
+            x: 0,
             opacity: 1,
             filter: 'blur(0px)',
             duration: 3,
@@ -132,17 +131,16 @@ const ProjectsSection = () => {
           }
         );
       } else {
-        // Animation for LARGE screens (>= 1150px) - ADJUST THESE VALUES
         gsap.fromTo(
           titleRef.current,
           {
-            x: 0,           // Starting X position
-            opacity: 0,     // Starting opacity
+            x: 0,
+            opacity: 0,
             filter: 'blur(8px)'
           },
           {
-            x: '55vw',      // Ending X position - CHANGE THIS VALUE
-            opacity: 1,     // Ending opacity
+            x: '55vw',
+            opacity: 1,
             filter: 'blur(0px)',
             duration: 3,
             ease: 'power4.out',
