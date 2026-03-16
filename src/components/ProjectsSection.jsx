@@ -10,6 +10,7 @@ import jarvis from '../assets/jarvis.png'
 import spotify from '../assets/spotify.png'
 import mood from '../assets/mood.png'
 import fabric from '../assets/fabraic.png'
+import dune from '../assets/dune.png'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,17 +41,17 @@ const ProjectsSection = () => {
       isDeployed: false,
       imageSrc: fabric,
     },
-    {
+          {
       id: 3,
-      title: 'Alphawave',
-      description: 'Fintech-EdTech platform ensembling BERT and LSTM for real-time risk scoring. It gamifies the learning experience with virtual trading competitions and mini-games to master emotional discipline.',
-      techStack: ['Python', 'BERT', 'LSTM', 'React', 'Next.js'],
-      githubUrl: 'https://github.com/AriseAk/AlphaWave',
-      demoUrl: 'https://demo.d-vote.com',
+      title: 'DuneLens',
+      description: 'A semantic segmentation system for desert /offroad UGV imagery. It uses a fine-tuned SegFormer-B2 as the primary model. A Next.js frontend provides a live prediction interface backed by a FastAPI inference server.',
+      techStack: ['Transformer','ML','Python', 'Flask', 'Next.js'],
+      githubUrl: 'https://github.com/AriseAk/DuneLens',
+      demoUrl: 'https://github.com/AriseAk/DuneLens',
       isDeployed: false,
-      imageSrc: '.',
+      imageSrc: dune,
     },
-    {
+        {
       id: 4,
       title: 'CareBridgeAi',
       description:
@@ -61,7 +62,7 @@ const ProjectsSection = () => {
       isDeployed: false,
       imageSrc: carebridge,
     },
-    {
+        {
       id: 5,
       title: 'MoodQuest',
       description: 'Enhance emotional self-awareness with MoodQuest. By analyzing real-time facial cues, it converts micro-expressions into actionable stress insights, visualized through a dashboard and a comforting pet companion',
@@ -73,6 +74,16 @@ const ProjectsSection = () => {
     },
     {
       id: 6,
+      title: 'Alphawave',
+      description: 'Fintech-EdTech platform ensembling BERT and LSTM for real-time risk scoring. It gamifies the learning experience with virtual trading competitions and mini-games to master emotional discipline.',
+      techStack: ['Python', 'BERT', 'LSTM', 'React', 'Next.js'],
+      githubUrl: 'https://github.com/AriseAk/AlphaWave',
+      demoUrl: 'https://demo.d-vote.com',
+      isDeployed: false,
+      imageSrc: '.',
+    },
+    {
+      id: 7,
       title: 'HackArena',
       description: 'HackArena is a platform designed to host and manage hackathons effortlessly,allows organizers to create and manage hackathons,while participants can register, form teams,and track progress in real time.',
       techStack: ['Python', 'Flask', 'JavaScript', 'OAuth', 'MongoDB'],
@@ -81,8 +92,10 @@ const ProjectsSection = () => {
       isDeployed: true,
       imageSrc: hackarena,
     },
+
+
     {
-      id: 7,
+      id: 8,
       title: 'SpotifyClone',
       description: 'This project is a Spotify Clone, designed with HTML, CSS, and JavaScript. It mimics the appearanceand basic functionalities of Spotify, including a dynamic UI, music playback controls, and a responsive layout.',
       techStack: ['HTML', 'CSS', 'JavaScript'],
@@ -92,7 +105,7 @@ const ProjectsSection = () => {
       imageSrc: spotify,
     },
     {
-      id: 8,
+      id: 9,
       title: 'Jarvis',
       description: 'JARVIS is a smart AI-powered assistant that helps users interact naturally through voice and text commands. It enables seamless file access, YouTube navigation, and personalized responses, enhancing productivity and convenience.',
       techStack: ['Python', 'Flask', 'JavaScript', 'API', 'User-OAuth'],
@@ -101,6 +114,7 @@ const ProjectsSection = () => {
       isDeployed: true,
       imageSrc: jarvis,
     },
+
   ];
 
   useLayoutEffect(() => {
