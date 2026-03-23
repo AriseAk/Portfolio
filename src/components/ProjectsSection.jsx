@@ -196,7 +196,7 @@ const ProjectsSection = () => {
             title={project.title}
             description={project.description}
             techStack={project.techStack}
-            primaryButtonText={project.isDeployed ? 'Live Demo' : 'View Repo'}
+            primaryButtonText={project.isDeployed ? 'Demo' : 'Repo'}
             primaryButtonUrl={project.demoUrl}
             githubUrl={project.githubUrl}
             imageSrc={project.imageSrc}
