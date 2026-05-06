@@ -12,6 +12,7 @@ import mood from '../assets/mood.png'
 import fabric from '../assets/fabraic.png'
 import dune from '../assets/dune.png'
 import neo from '../assets/neo.png'
+import contract from '../assets/contract.png'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,7 +41,7 @@ const ProjectsSection = () => {
       githubUrl: 'https://github.com/AriseAk/ContractPulse',
       demoUrl: 'https://contract-pulse-delta.vercel.app/',
       isDeployed: true,
-      imageSrc: jarvis,
+      imageSrc: contract,
     },
     
 
