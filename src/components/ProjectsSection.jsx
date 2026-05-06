@@ -11,6 +11,7 @@ import spotify from '../assets/spotify.png'
 import mood from '../assets/mood.png'
 import fabric from '../assets/fabraic.png'
 import dune from '../assets/dune.png'
+import neo from '../assets/neo.png'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,8 +31,52 @@ const ProjectsSection = () => {
       isDeployed: true,
       imageSrc: portfolio,
     },
+    
     {
       id: 2,
+      title: 'ContractPulse',
+      description: 'Full-stack Fintech SaaS platform that bridges legal departments and financial risk management using state-of-the-art AI. It parses obligations, detects cross-document conflicts, and forecasts covenant breach risk in real time.',
+      techStack: ['Python', 'RoBERTa', 'DistilBERT', 'Prophet', 'Flask'],
+      githubUrl: 'https://github.com/AriseAk/ContractPulse',
+      demoUrl: 'https://contract-pulse-delta.vercel.app/',
+      isDeployed: true,
+      imageSrc: jarvis,
+    },
+    
+
+        {
+      id: 3,
+      title: 'CareBridgeAi',
+      description:
+        'A comprehensive system designed to provide immediate help, support, and vital information to those in need,specifically fine-tuned on medical dialogues to provide relevant, conversational responses.',
+      techStack: ['ML', 'Next.js', 'React', 'Tailwind', 'Notebook'],
+      githubUrl: 'https://github.com/AriseAk/CareBridgeAI',
+      demoUrl: 'https://carebridgeai-peach.vercel.app/',
+      isDeployed: true,
+      imageSrc: carebridge,
+    },
+        {
+      id: 4,
+      title: 'MoodQuest',
+      description: 'Enhance emotional self-awareness with MoodQuest. By analyzing real-time facial cues, it converts micro-expressions into actionable stress insights, visualized through a dashboard and a comforting pet companion',
+      techStack: ['ML', 'Flask', 'Next.js', 'OpenCV', 'Tailwind'],
+      githubUrl: 'https://github.com/Redinferno1736/MoodQuest',
+      demoUrl: 'https://mood-quest-zeta.vercel.app/',
+      isDeployed: true,
+      imageSrc: mood,
+    },
+        {
+      id: 5,
+      title: 'Neoscore',
+      description: 'An AI-powered credit scoring engine that uses alternative data to generate explainable credit scores and risk insights for thin-file users.',
+      techStack: ['Python', 'ML', 'SHAP', 'Flask', 'Next.js'],
+      githubUrl: 'https://github.com/Redinferno1736/NeoScore',
+      demoUrl: '..',
+      isDeployed: false,
+      imageSrc: neo,
+    },
+    {
+      id: 6,
       title: 'FabrAIc',
       description:
         'Turn your physical closet into a digital inventory. FabrAIc leverages AI to analyze clothing images for seamless organization and instant outfit ideas.',
@@ -41,8 +86,8 @@ const ProjectsSection = () => {
       isDeployed: false,
       imageSrc: fabric,
     },
-          {
-      id: 3,
+              {
+      id: 7,
       title: 'DuneLens',
       description: 'A semantic segmentation system for desert/offroad UGV imagery. It uses a fine-tuned SegFormer-B2 as the primary model. A Next.js frontend provides a live prediction interface backed by a FastAPI inference server.',
       techStack: ['Transformer','ML','Python', 'Flask', 'Next.js'],
@@ -51,29 +96,8 @@ const ProjectsSection = () => {
       isDeployed: false,
       imageSrc: dune,
     },
-        {
-      id: 4,
-      title: 'CareBridgeAi',
-      description:
-        'A comprehensive system designed to provide immediate help, support, and vital information to those in need,specifically fine-tuned on medical dialogues to provide relevant, conversational responses.',
-      techStack: ['ML', 'Next.js', 'React', 'Tailwind', 'Notebook'],
-      githubUrl: 'https://github.com/AriseAk/CareBridgeAI',
-      demoUrl: 'https://demo.d-vote.com',
-      isDeployed: false,
-      imageSrc: carebridge,
-    },
-        {
-      id: 5,
-      title: 'MoodQuest',
-      description: 'Enhance emotional self-awareness with MoodQuest. By analyzing real-time facial cues, it converts micro-expressions into actionable stress insights, visualized through a dashboard and a comforting pet companion',
-      techStack: ['ML', 'Flask', 'Next.js', 'OpenCV', 'Tailwind'],
-      githubUrl: 'https://github.com/Redinferno1736/MoodQuest',
-      demoUrl: '..',
-      isDeployed: false,
-      imageSrc: mood,
-    },
     {
-      id: 6,
+      id: 8,
       title: 'Alphawave',
       description: 'Fintech-EdTech platform ensembling BERT and LSTM for real-time risk scoring. It gamifies the learning experience with virtual trading competitions and mini-games to master emotional discipline.',
       techStack: ['Python', 'BERT', 'LSTM', 'React', 'Next.js'],
@@ -83,7 +107,7 @@ const ProjectsSection = () => {
       imageSrc: '.',
     },
     {
-      id: 7,
+      id: 9,
       title: 'HackArena',
       description: 'HackArena is a platform designed to host and manage hackathons effortlessly,allows organizers to create and manage hackathons,while participants can register, form teams,and track progress in real time.',
       techStack: ['Python', 'Flask', 'JavaScript', 'OAuth', 'MongoDB'],
@@ -94,26 +118,7 @@ const ProjectsSection = () => {
     },
 
 
-    {
-      id: 8,
-      title: 'SpotifyClone',
-      description: 'This project is a Spotify Clone, designed with HTML, CSS, and JavaScript. It mimics the appearanceand basic functionalities of Spotify, including a dynamic UI, music playback controls, and a responsive layout.',
-      techStack: ['HTML', 'CSS', 'JavaScript'],
-      githubUrl: 'https://github.com/AriseAk/Spotify-Clone',
-      demoUrl: 'https://spotify-cloneak.netlify.app/',
-      isDeployed: true,
-      imageSrc: spotify,
-    },
-    {
-      id: 9,
-      title: 'Jarvis',
-      description: 'JARVIS is a smart AI-powered assistant that helps users interact naturally through voice and text commands. It enables seamless file access, YouTube navigation, and personalized responses, enhancing productivity and convenience.',
-      techStack: ['Python', 'Flask', 'JavaScript', 'API', 'User-OAuth'],
-      githubUrl: 'https://github.com/AriseAk/Jarvis',
-      demoUrl: 'https://jarvis-4uec.onrender.com/',
-      isDeployed: true,
-      imageSrc: jarvis,
-    },
+
 
   ];
 
